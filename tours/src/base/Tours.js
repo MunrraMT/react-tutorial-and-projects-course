@@ -1,3 +1,3 @@
-const Tours = () => <h2>tours component</h2>;
+const Tours = () => <h2>Componente Turismo</h2>;
 
 export default Tours;
