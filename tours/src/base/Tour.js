@@ -1,11 +1,17 @@
-import { string } from 'prop-types';
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
 
-const Tour = ({ name, info, image, price }) => {
+import { func, string } from 'prop-types';
+
+const Tour = ({ id, name, info, image, price, removeTour }) => {
   const [readMore, setReadMore] = useState(false);
 
   const handleClickReadMore = () => {
     setReadMore((prev) => !prev);
+  };
+
+  const handleClickRemoveTour = () => {
+    console.log(id);
+    removeTour(id);
   };
 
   return (
@@ -19,10 +25,14 @@ const Tour = ({ name, info, image, price }) => {
         <p>
           {readMore ? info : `${info.slice(0, 200)}...`}{' '}
           <button type="button" onClick={handleClickReadMore}>
-            {readMore ? 'Ler menos' : 'Ler mais'}
+            {readMore ? 'Mostrar menos' : 'Ler mais'}
           </button>{' '}
         </p>
-        <button type="button" className="delete-btn">
+        <button
+          type="button"
+          className="delete-btn"
+          onClick={handleClickRemoveTour}
+        >
           Sem interesse
         </button>
       </footer>
@@ -31,10 +41,12 @@ const Tour = ({ name, info, image, price }) => {
 };
 
 Tour.propTypes = {
+  id: string.isRequired,
   name: string.isRequired,
   info: string.isRequired,
   image: string.isRequired,
   price: string.isRequired,
+  removeTour: func.isRequired,
 };
 
 export default Tour;
