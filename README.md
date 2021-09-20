@@ -11,3 +11,5 @@ All Project Intros are available for preview.
 - Basic Projects:
 
   - [Birthday Reminder](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/birthday-reminder)
+
+  - [Tours](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/tours)
