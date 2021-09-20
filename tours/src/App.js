@@ -1,5 +1,3 @@
-/* eslint-disable no-unused-vars */
-
 import { useEffect, useState } from 'react';
 
 import Loading from './base/Loading';
@@ -33,7 +31,7 @@ function App() {
   return (
     <main>
       {loading && <Loading />}
-      {!loading && <Tours />}
+      {!loading && <Tours tours={tours} />}
     </main>
   );
 }
