@@ -15,3 +15,5 @@ All Project Intros are available for preview.
   - [Tours](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/tours)
 
   - [Reviews](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/reviews)
+
+  - [Accordion](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/accordion)
