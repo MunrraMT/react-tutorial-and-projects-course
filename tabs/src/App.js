@@ -1,6 +1,10 @@
 /* eslint-disable */
 import { useEffect, useState } from 'react';
 
+import { FaAngleDoubleRight } from 'react-icons/fa';
+
+import randomNumber from './random-number';
+
 function App() {
   const [loading, setLoading] = useState(true);
   const [jobs, setJobs] = useState([]);
@@ -21,15 +25,34 @@ function App() {
 
   return (
     <main>
-      {loading && (
+      {loading ? (
         <section className="section loading">
           <h1>Loading...</h1>
         </section>
-      )}
-
-      {!loading && (
+      ) : (
         <section className="section">
-          <h1>teste</h1>
+          <header className="title">
+            <h2>expierence</h2>
+            <div className="underline"></div>
+          </header>
+
+          <section className="jobs-center">
+            {/*  */}
+            {/*  */}
+
+            <article className="job-info">
+              <h3>{jobs[value].title}</h3>
+              <h4>{jobs[value].company}</h4>
+              <p className="job-date">{jobs[value].dates}</p>
+
+              {jobs[value].duties.map((duty) => (
+                <section key={randomNumber(1000, 9999)} className="job-desc">
+                  <FaAngleDoubleRight className="job-icon" />
+                  <p>{duty}</p>
+                </section>
+              ))}
+            </article>
+          </section>
         </section>
       )}
     </main>
