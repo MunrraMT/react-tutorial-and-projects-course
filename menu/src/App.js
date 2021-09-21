@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import data from './base/data';
 import Menu from './base/Menu';
@@ -8,6 +8,12 @@ import Categories from './base/Categories';
 function App() {
   const [menuItems, setMenuItems] = useState(data);
   const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    const allCategories = new Set(data.map((item) => item.category));
+
+    setCategories(['all', ...allCategories]);
+  }, []);
 
   const filterItems = (category) => {
     if (category === 'all') setMenuItems(data);
@@ -27,7 +33,7 @@ function App() {
           <div className="underline" />
         </header>
 
-        <Categories filterItems={filterItems} />
+        <Categories categories={categories} filterItems={filterItems} />
         <Menu items={menuItems} />
       </section>
     </main>

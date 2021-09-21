@@ -1,26 +1,22 @@
-import { func } from 'prop-types';
+import { arrayOf, func, string } from 'prop-types';
 
-const Categories = ({ filterItems }) => (
+const Categories = ({ categories, filterItems }) => (
   <section className="btn-container">
-    <button
-      type="button"
-      className="filter-btn"
-      onClick={() => filterItems('all')}
-    >
-      Todos
-    </button>
-
-    <button
-      type="button"
-      className="filter-btn"
-      onClick={() => filterItems('breakfast')}
-    >
-      Café da manhã
-    </button>
+    {categories.map((category) => (
+      <button
+        key={category}
+        type="button"
+        className="filter-btn"
+        onClick={() => filterItems(category)}
+      >
+        {category}
+      </button>
+    ))}
   </section>
 );
 
 Categories.propTypes = {
+  categories: arrayOf(string).isRequired,
   filterItems: func.isRequired,
 };
 
