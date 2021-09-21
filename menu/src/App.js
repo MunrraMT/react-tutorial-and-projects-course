@@ -2,12 +2,18 @@
 import { useState } from 'react';
 
 import data from './base/data';
-import Categories from './base/Categories';
 import Menu from './base/Menu';
+import Categories from './base/Categories';
 
 function App() {
   const [menuItems, setMenuItems] = useState(data);
   const [categories, setCategories] = useState([]);
+
+  const filterItems = (category) => {
+    const newItems = data.filter((item) => item.category === category);
+
+    setMenuItems(newItems);
+  };
 
   return (
     <main>
@@ -17,7 +23,7 @@ function App() {
           <div className="underline" />
         </header>
 
-        <Categories />
+        <Categories filterItems={filterItems} />
         <Menu items={menuItems} />
       </section>
     </main>
