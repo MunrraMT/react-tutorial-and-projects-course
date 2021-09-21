@@ -37,7 +37,20 @@ function App() {
           </header>
 
           <section className="jobs-center">
-            {/*  */}
+            <section className="btn-container">
+              {jobs.map((job, index) => {
+                return (
+                  <button
+                    key={job.id}
+                    type="button"
+                    className={`job-btn ${index === value && 'active-btn'}`}
+                    onClick={() => setValue(index)}
+                  >
+                    {job.company}
+                  </button>
+                );
+              })}
+            </section>
             {/*  */}
 
             <article className="job-info">
@@ -46,7 +59,7 @@ function App() {
               <p className="job-date">{jobs[value].dates}</p>
 
               {jobs[value].duties.map((duty) => (
-                <section key={randomNumber(1000, 9999)} className="job-desc">
+                <section key={randomNumber()} className="job-desc">
                   <FaAngleDoubleRight className="job-icon" />
                   <p>{duty}</p>
                 </section>
