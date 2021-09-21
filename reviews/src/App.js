@@ -1,12 +1,16 @@
-import { FaGithubSquare } from 'react-icons/fa';
+import Review from './base/Review';
 
 function App() {
   return (
     <main>
-      <h1>
-        <FaGithubSquare className="icon" />
-        teste
-      </h1>
+      <section className="container">
+        <header className="title">
+          <h2>Nossas Análises</h2>
+          <div className="underline" />
+        </header>
+
+        <Review />
+      </section>
     </main>
   );
 }
