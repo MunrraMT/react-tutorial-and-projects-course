@@ -20,6 +20,17 @@ const Review = () => {
     if (index < peoples.length - 1) setIndext((prev) => Number(prev) + 1);
   };
 
+  const randomNumber = () => Math.floor(Math.random() * peoples.length);
+
+  const handleClickRandomPerson = () => {
+    const number = randomNumber();
+
+    if (number === index)
+      setIndext(Number(number) + 1 === peoples.length ? 0 : Number(number) + 1);
+
+    if (number !== index) setIndext(number);
+  };
+
   return (
     <article className="review">
       <header className="img-container">
@@ -51,7 +62,11 @@ const Review = () => {
         </button>
       </footer>
 
-      <button type="button" className="random-btn">
+      <button
+        type="button"
+        className="random-btn"
+        onClick={handleClickRandomPerson}
+      >
         Me surpreenda
       </button>
     </article>
