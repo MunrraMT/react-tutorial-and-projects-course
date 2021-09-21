@@ -9,7 +9,10 @@ const Categories = ({ categories, filterItems }) => (
         className="filter-btn"
         onClick={() => filterItems(category)}
       >
-        {category}
+        {category === 'all' && 'Todos'}
+        {category === 'breakfast' && 'Café da manhã'}
+        {category === 'lunch' && 'Almoço'}
+        {category === 'shakes' && 'Milk Shakes'}
       </button>
     ))}
   </section>

@@ -17,3 +17,5 @@ All Project Intros are available for preview.
   - [Reviews](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/reviews)
 
   - [Accordion](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/accordion)
+
+  - [Mennu](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/menu)
