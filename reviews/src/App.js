@@ -1,8 +1,13 @@
+import { FaGithubSquare } from 'react-icons/fa';
+
 function App() {
   return (
-    <div className="App">
-      <h1>teste</h1>
-    </div>
+    <main>
+      <h1>
+        <FaGithubSquare className="icon" />
+        teste
+      </h1>
+    </main>
   );
 }
 
