@@ -10,6 +10,16 @@ const Review = () => {
 
   const { name, job, image, text } = peoples[index];
 
+  const handleClickPreviousPerson = () => {
+    if (index === 0) setIndext(peoples.length - 1);
+    if (index > 0) setIndext((prev) => Number(prev) - 1);
+  };
+
+  const handleClickNextPerson = () => {
+    if (index === peoples.length - 1) setIndext(0);
+    if (index < peoples.length - 1) setIndext((prev) => Number(prev) + 1);
+  };
+
   return (
     <article className="review">
       <header className="img-container">
@@ -24,11 +34,19 @@ const Review = () => {
       <p className="info">{text}</p>
 
       <footer className="button-container">
-        <button type="button" className="prev-btn">
+        <button
+          type="button"
+          className="prev-btn"
+          onClick={handleClickPreviousPerson}
+        >
           <FaChevronLeft />
         </button>
 
-        <button type="button" className="next-btn">
+        <button
+          type="button"
+          className="next-btn"
+          onClick={handleClickNextPerson}
+        >
           <FaChevronRight />
         </button>
       </footer>
