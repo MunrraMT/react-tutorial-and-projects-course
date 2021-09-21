@@ -1,5 +1,6 @@
-import { arrayOf, number, shape, string } from 'prop-types';
 import React from 'react';
+
+import { arrayOf, number, shape, string } from 'prop-types';
 
 const List = ({ people }) =>
   people.map(({ id, name, age, image }) => (
