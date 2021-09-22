@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useEffect, useState } from 'react';
 
 import { FaQuoteRight } from 'react-icons/fa';
@@ -9,10 +8,30 @@ import data from './base/data';
 function App() {
   const [people, setPeople] = useState([]);
   const [index, setIndex] = useState(0);
+  const [stopAutoPlay, setStopAutoPlay] = useState(false);
 
   useEffect(() => {
     setPeople(data);
-  }, []);
+  }, [data]);
+
+  useEffect(() => {
+    if (index > data.length - 1) setIndex(0);
+    if (index < 0) setIndex(data.length - 1);
+  }, [index]);
+
+  useEffect(() => {
+    const autoPlay = setInterval(() => {
+      setIndex((prev) => Number(prev) + 1);
+    }, 1500);
+
+    if (stopAutoPlay) {
+      clearInterval(autoPlay);
+    }
+
+    return () => {
+      clearInterval(autoPlay);
+    };
+  }, [stopAutoPlay]);
 
   const articleFormatted = (position, { id, image, name, title, quote }) => (
     <article className={position} key={id}>
@@ -25,13 +44,13 @@ function App() {
   );
 
   const handleClickNextSlide = () => {
-    if (index >= 0) setIndex((prev) => Number(prev) + 1);
-    if (index === data.length - 1) setIndex(0);
+    setIndex((prev) => Number(prev) + 1);
+    setStopAutoPlay(true);
   };
 
   const handleClickPrevSlide = () => {
-    if (index <= data.length - 1) setIndex((prev) => Number(prev) - 1);
-    if (index === 0) setIndex(data.length - 1);
+    setIndex((prev) => Number(prev) - 1);
+    setStopAutoPlay(true);
   };
 
   return (
