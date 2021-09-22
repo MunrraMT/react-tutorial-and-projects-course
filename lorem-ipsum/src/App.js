@@ -4,21 +4,44 @@ import data from './base/data';
 
 function App() {
   const [textBase, setTextBase] = useState([]);
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState('0');
   const [textGenerated, setTextGenerated] = useState([]);
 
   useEffect(() => {
     setTextBase(data);
   }, []);
 
+  const randomNumber = () => Math.floor(Math.random() * 100000);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(count);
+    if (textBase.length === 0)
+      setTextGenerated('Servidor de texto não encontrado.');
+
+    if (Number(count) === 0) {
+      setTextGenerated(
+        textBase.map((text) => <p key={randomNumber()}>{text}</p>),
+      );
+    }
+
+    if (Number(count) > 0) {
+      setTextGenerated(
+        textBase
+          .slice(0, Number(count))
+          .map((text) => <p key={randomNumber()}>{text}</p>),
+      );
+    }
   };
 
   const handleChange = (e) => {
-    setCount(e.target.value);
+    setCount(
+      e.target.value < 0
+        ? 0
+        : e.target.value > textBase.length
+        ? textBase.length
+        : e.target.value,
+    );
   };
 
   return (
