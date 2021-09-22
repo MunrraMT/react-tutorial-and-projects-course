@@ -21,3 +21,5 @@ All Project Intros are available for preview.
   - [Menu](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/menu)
 
   - [Tabs](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/tabs)
+
+  - [Slider](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/slider)
