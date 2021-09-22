@@ -24,6 +24,16 @@ function App() {
     </article>
   );
 
+  const handleClickNextSlide = () => {
+    if (index >= 0) setIndex((prev) => Number(prev) + 1);
+    if (index === data.length - 1) setIndex(0);
+  };
+
+  const handleClickPrevSlide = () => {
+    if (index <= data.length - 1) setIndex((prev) => Number(prev) - 1);
+    if (index === 0) setIndex(data.length - 1);
+  };
+
   return (
     <main>
       <section className="section">
@@ -34,27 +44,30 @@ function App() {
         </header>
 
         <section className="section-center">
-          {people.length > 0 &&
+          {people.length > 0 ? (
             people.map((person, personIndex) => {
               if (personIndex === index) {
                 return articleFormatted('activeSlide', person);
               }
 
               if (
-                personIndex === index - 1 ||
-                (index === 0 && personIndex === people.length - 1)
+                (index === 0 && personIndex === people.length - 1) ||
+                personIndex === index - 1
               ) {
                 return articleFormatted('lastSlide', person);
               }
 
               return articleFormatted('nextSlide', person);
-            })}
+            })
+          ) : (
+            <h2>Loading...</h2>
+          )}
 
-          <button type="button" className="prev">
+          <button type="button" className="prev" onClick={handleClickPrevSlide}>
             <FiChevronLeft />
           </button>
 
-          <button type="button" className="next">
+          <button type="button" className="next" onClick={handleClickNextSlide}>
             <FiChevronRight />
           </button>
         </section>
