@@ -1,5 +1,5 @@
 /* eslint-disable  */
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import Alert from './base/Alert';
 import List from './base/List';
@@ -10,6 +10,12 @@ function App() {
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditID] = useState(null);
   const [alert, setAlert] = useState({ show: false, msg: '', type: '' });
+
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
 
   const showAlert = (show = false, msg = '', type = '') => {
     setAlert((prev) => ({ ...prev, show, msg, type }));
@@ -37,6 +43,16 @@ function App() {
     }
 
     if (name && isEditing) {
+      setList(
+        list.map((item) => {
+          return Number(item.id) === Number(editId)
+            ? { ...item, title: name }
+            : item;
+        }),
+      );
+      setName('');
+      setEditID(null);
+      setIsEditing(false);
       showAlert(true, 'Editado com sucesso.', 'success');
     }
 
@@ -56,8 +72,16 @@ function App() {
   };
 
   const removeItem = (id) => {
-    setList(list.filter((item) => item.id !== id));
+    setList(list.filter((item) => Number(item.id) !== Number(id)));
     showAlert(true, 'Item apagado com sucesso.', 'danger');
+  };
+
+  const editItem = (id) => {
+    const item = list.find((item) => Number(item.id) === Number(id));
+
+    setIsEditing(true);
+    setEditID(item.id);
+    setName(item.title);
   };
 
   return (
@@ -68,6 +92,7 @@ function App() {
 
         <section className="form-control">
           <input
+            ref={inputRef}
             type="text"
             className="grocery"
             placeholder="e.g. eggs"
@@ -83,7 +108,7 @@ function App() {
 
       {list.length > 0 && (
         <section className="grocery-container">
-          <List items={list} removeItem={removeItem} />
+          <List items={list} removeItem={removeItem} editItem={editItem} />
           <button type="button" className="clear-btn" onClick={clearList}>
             clear items
           </button>
