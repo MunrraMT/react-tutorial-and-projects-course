@@ -1,7 +1,8 @@
-/* eslint-disable */
 import { useState } from 'react';
 
 import Values from 'values.js';
+
+import SingleColor from './base/SingleColor';
 
 function App() {
   const [color, setColor] = useState('');
@@ -13,10 +14,11 @@ function App() {
 
     try {
       const colors = new Values(color).all(10);
+
+      setList(colors);
       setError(false);
-    } catch (error) {
+    } catch (errorMsg) {
       setError(true);
-      console.log(error);
     }
   };
 
@@ -37,12 +39,22 @@ function App() {
             onChange={handleChange}
             className={`${error && 'error'} `}
           />
-          <button type="submit">submit</button>
+          <button className="btn" type="submit">
+            submit
+          </button>
         </form>
       </section>
 
       <section className="colors">
-        <h4>list goes here</h4>
+        {list.map(({ rgb, weight, hex }, index) => (
+          <SingleColor
+            key={hex}
+            rgb={rgb}
+            weight={weight}
+            hex={hex}
+            index={index}
+          />
+        ))}
       </section>
     </>
   );
