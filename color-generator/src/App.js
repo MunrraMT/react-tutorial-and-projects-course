@@ -1,4 +1,7 @@
+/* eslint-disable */
 import { useState } from 'react';
+
+import Values from 'values.js';
 
 function App() {
   const [color, setColor] = useState('');
@@ -8,7 +11,13 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('Hello');
+    try {
+      const colors = new Values(color).all(10);
+      setError(false);
+    } catch (error) {
+      setError(true);
+      console.log(error);
+    }
   };
 
   const handleChange = (e) => {
@@ -18,7 +27,7 @@ function App() {
   return (
     <>
       <section className="container">
-        <h1>color generator</h1>
+        <h3>color generator</h3>
 
         <form onSubmit={handleSubmit}>
           <input
@@ -26,13 +35,14 @@ function App() {
             placeholder="#f15025"
             value={color}
             onChange={handleChange}
+            className={`${error && 'error'} `}
           />
           <button type="submit">submit</button>
         </form>
       </section>
 
       <section className="colors">
-        <h2>list goes here</h2>
+        <h4>list goes here</h4>
       </section>
     </>
   );
