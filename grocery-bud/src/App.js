@@ -51,8 +51,13 @@ function App() {
   };
 
   const clearList = () => {
-    showAlert(true, 'Todos os items foram apagados.');
+    showAlert(true, 'Todos os items foram apagados.', 'danger');
     setList([]);
+  };
+
+  const removeItem = (id) => {
+    setList(list.filter((item) => item.id !== id));
+    showAlert(true, 'Item apagado com sucesso.', 'danger');
   };
 
   return (
@@ -78,7 +83,7 @@ function App() {
 
       {list.length > 0 && (
         <section className="grocery-container">
-          <List items={list} />
+          <List items={list} removeItem={removeItem} />
           <button type="button" className="clear-btn" onClick={clearList}>
             clear items
           </button>

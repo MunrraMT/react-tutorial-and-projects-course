@@ -1,7 +1,7 @@
-import { arrayOf, shape, string } from 'prop-types';
+import { arrayOf, func, shape, string } from 'prop-types';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
-const List = ({ items }) => (
+const List = ({ items, removeItem }) => (
   <section className="grocery-list">
     {items.map(({ id, title }) => (
       <article key={id} className="grocery-item">
@@ -11,7 +11,13 @@ const List = ({ items }) => (
           <button type="button" className="edit-btn">
             <FaEdit />
           </button>
-          <button type="button" className="delete-btn">
+          <button
+            type="button"
+            className="delete-btn"
+            onClick={() => {
+              removeItem(id);
+            }}
+          >
             <FaTrash />
           </button>
         </section>
@@ -22,6 +28,7 @@ const List = ({ items }) => (
 
 List.propTypes = {
   items: arrayOf(shape({ id: string, title: string })).isRequired,
+  removeItem: func.isRequired,
 };
 
 export default List;
