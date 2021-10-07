@@ -25,3 +25,7 @@ All Project Intros are available for preview.
   - [Slider](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/slider)
 
   - [Lorem Ipsum](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/lorem-ipsum)
+
+  - [Color Generator](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/color-generator)
+
+  - [Grocery Bud](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/grocery-bud)
