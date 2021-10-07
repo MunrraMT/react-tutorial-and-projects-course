@@ -1,8 +1,10 @@
+import Navbar from './base/Navbar';
+
 function App() {
   return (
-    <div className="App">
-      <h1>navbar</h1>
-    </div>
+    <>
+      <Navbar />
+    </>
   );
 }
 
