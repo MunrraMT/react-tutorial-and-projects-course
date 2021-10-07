@@ -1,4 +1,3 @@
-/* eslint-disable  */
 import { useEffect, useRef, useState } from 'react';
 
 import Alert from './base/Alert';
@@ -16,6 +15,18 @@ function App() {
   useEffect(() => {
     inputRef.current.focus();
   }, []);
+
+  useEffect(() => {
+    const laodList = JSON.parse(localStorage.getItem('grocery'));
+
+    if (laodList) {
+      setList(laodList);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('grocery', JSON.stringify(list));
+  }, [list]);
 
   const showAlert = (show = false, msg = '', type = '') => {
     setAlert((prev) => ({ ...prev, show, msg, type }));
@@ -44,11 +55,9 @@ function App() {
 
     if (name && isEditing) {
       setList(
-        list.map((item) => {
-          return Number(item.id) === Number(editId)
-            ? { ...item, title: name }
-            : item;
-        }),
+        list.map((item) =>
+          Number(item.id) === Number(editId) ? { ...item, title: name } : item,
+        ),
       );
       setName('');
       setEditID(null);
@@ -77,11 +86,11 @@ function App() {
   };
 
   const editItem = (id) => {
-    const item = list.find((item) => Number(item.id) === Number(id));
+    const itemEditing = list.find((item) => Number(item.id) === Number(id));
 
     setIsEditing(true);
-    setEditID(item.id);
-    setName(item.title);
+    setEditID(itemEditing.id);
+    setName(itemEditing.title);
   };
 
   return (
