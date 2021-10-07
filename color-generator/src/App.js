@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useEffect } from 'react/cjs/react.development';
 
 import Values from 'values.js';
 
@@ -8,6 +9,12 @@ function App() {
   const [color, setColor] = useState('');
   const [error, setError] = useState(false);
   const [list, setList] = useState([]);
+
+  useEffect(() => {
+    const firstList = new Values('#f15025').all(10);
+
+    setList(firstList);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
