@@ -1,4 +1,4 @@
-import { arrayOf, number, shape, string } from 'prop-types';
+import { arrayOf, shape, string } from 'prop-types';
 import { FaEdit, FaTrash } from 'react-icons/fa';
 
 const List = ({ items }) => (
@@ -21,7 +21,7 @@ const List = ({ items }) => (
 );
 
 List.propTypes = {
-  items: arrayOf(shape({ id: number, title: string })).isRequired,
+  items: arrayOf(shape({ id: string, title: string })).isRequired,
 };
 
 export default List;

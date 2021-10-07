@@ -1,5 +1,5 @@
 /* eslint-disable  */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Alert from './base/Alert';
 import List from './base/List';
@@ -10,6 +10,20 @@ function App() {
   const [isEditing, setIsEditing] = useState(false);
   const [editId, setEditID] = useState(null);
   const [alert, setAlert] = useState({ show: false, msg: '', type: '' });
+
+  useEffect(() => {
+    const alertTimer = setTimeout(() => {
+      setAlert((prev) => ({ ...prev, show: false }));
+    }, 2000);
+
+    return () => {
+      clearTimeout(alertTimer);
+    };
+  }, [alert]);
+
+  const handleChange = (e) => {
+    setName(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -45,14 +59,10 @@ function App() {
     }
   };
 
-  const handleChange = (e) => {
-    setName(e.target.value);
-  };
-
   return (
     <section className="section-center">
       <form className="grocery-form" onSubmit={handleSubmit}>
-        {alert.show && <Alert />}
+        {alert.show && <Alert state={alert} />}
         <h3>Grocery Bud</h3>
 
         <section className="form-control">
