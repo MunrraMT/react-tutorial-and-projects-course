@@ -13,7 +13,36 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Hello');
+
+    if (!name) {
+      setAlert({
+        show: true,
+        msg: 'Precisa ter um nome válido',
+        type: 'danger',
+      });
+    }
+
+    if (name && isEditing) {
+      setAlert({
+        show: true,
+        msg: 'Editado com sucesso',
+        type: 'success',
+      });
+    }
+
+    if (name && !isEditing) {
+      const newID = new Date().getTime().toString();
+      const newItem = { id: newID, title: name };
+
+      setAlert({
+        show: true,
+        msg: 'Adicionado com sucesso',
+        type: 'success',
+      });
+
+      setList((prev) => [...prev, newItem]);
+      setName('');
+    }
   };
 
   const handleChange = (e) => {
@@ -41,12 +70,14 @@ function App() {
         </section>
       </form>
 
-      <section className="grocery-container">
-        <List />
-        <button type="button" className="clear-btn">
-          clear items
-        </button>
-      </section>
+      {list.length > 0 && (
+        <section className="grocery-container">
+          <List items={list} />
+          <button type="button" className="clear-btn">
+            clear items
+          </button>
+        </section>
+      )}
     </section>
   );
 }
