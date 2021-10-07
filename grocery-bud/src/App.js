@@ -11,9 +11,13 @@ function App() {
   const [editId, setEditID] = useState(null);
   const [alert, setAlert] = useState({ show: false, msg: '', type: '' });
 
+  const showAlert = (show = false, msg = '', type = '') => {
+    setAlert((prev) => ({ ...prev, show, msg, type }));
+  };
+
   useEffect(() => {
     const alertTimer = setTimeout(() => {
-      setAlert((prev) => ({ ...prev, show: false }));
+      showAlert(false);
     }, 2000);
 
     return () => {
@@ -29,34 +33,26 @@ function App() {
     e.preventDefault();
 
     if (!name) {
-      setAlert({
-        show: true,
-        msg: 'Precisa ter um nome válido',
-        type: 'danger',
-      });
+      showAlert(true, 'Precisa ter um nome válido.', 'danger');
     }
 
     if (name && isEditing) {
-      setAlert({
-        show: true,
-        msg: 'Editado com sucesso',
-        type: 'success',
-      });
+      showAlert(true, 'Editado com sucesso.', 'success');
     }
 
     if (name && !isEditing) {
       const newID = new Date().getTime().toString();
       const newItem = { id: newID, title: name };
 
-      setAlert({
-        show: true,
-        msg: 'Adicionado com sucesso',
-        type: 'success',
-      });
-
+      showAlert(true, 'Adicionado com sucesso.', 'success');
       setList((prev) => [...prev, newItem]);
       setName('');
     }
+  };
+
+  const clearList = () => {
+    showAlert(true, 'Todos os items foram apagados.');
+    setList([]);
   };
 
   return (
@@ -83,7 +79,7 @@ function App() {
       {list.length > 0 && (
         <section className="grocery-container">
           <List items={list} />
-          <button type="button" className="clear-btn">
+          <button type="button" className="clear-btn" onClick={clearList}>
             clear items
           </button>
         </section>
