@@ -1,26 +1,27 @@
-import { func } from 'prop-types';
+import { useContext } from 'react';
+
 import { FaBars } from 'react-icons/fa';
 
-const Home = ({ setOpenModal }) => {
-  const handleClickOpenModal = () => {
-    setOpenModal((prev) => !prev);
-  };
+import { AppContext } from './context';
+
+const Home = () => {
+  const { toggleOpenModal, toggleOpenSideBar } = useContext(AppContext);
 
   return (
     <main>
-      <button type="button" className="sidebar-toggle">
+      <button
+        type="button"
+        className="sidebar-toggle"
+        onClick={toggleOpenSideBar}
+      >
         <FaBars />
       </button>
 
-      <button type="button" className="btn" onClick={handleClickOpenModal}>
+      <button type="button" className="btn" onClick={toggleOpenModal}>
         Show modal
       </button>
     </main>
   );
-};
-
-Home.propTypes = {
-  setOpenModal: func.isRequired,
 };
 
 export default Home;

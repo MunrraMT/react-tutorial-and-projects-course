@@ -1,28 +1,28 @@
-import { bool, func } from 'prop-types';
+import { useContext } from 'react';
+
 import { FaTimes } from 'react-icons/fa';
 
-const Modal = ({ open, setOpen }) => {
-  const handleClick = () => {
-    setOpen((prev) => !prev);
-  };
+import { AppContext } from './context';
+
+const Modal = () => {
+  const { isOpenModal, toggleOpenModal } = useContext(AppContext);
 
   return (
     <section
-      className={`${open ? 'modal-overlay show-modal' : 'modal-overlay'}`}
+      className={isOpenModal ? 'modal-overlay show-modal' : 'modal-overlay'}
     >
       <section className="modal-container">
         <h3>modal</h3>
-        <button type="button" className="close-modal-btn" onClick={handleClick}>
+        <button
+          type="button"
+          className="close-modal-btn"
+          onClick={toggleOpenModal}
+        >
           <FaTimes />
         </button>
       </section>
     </section>
   );
-};
-
-Modal.propTypes = {
-  open: bool.isRequired,
-  setOpen: func.isRequired,
 };
 
 export default Modal;
