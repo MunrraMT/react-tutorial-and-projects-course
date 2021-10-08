@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   FaBehance,
   FaFacebook,
@@ -11,6 +10,7 @@ import {
   FaCalendarAlt,
   FaWpforms,
 } from 'react-icons/fa';
+
 export const links = [
   {
     id: 1,

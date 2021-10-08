@@ -1,7 +1,14 @@
-import React from 'react'
-import { FaTimes } from 'react-icons/fa'
-const Modal = () => {
-  return <h2>Modal</h2>
-}
+import { FaTimes } from 'react-icons/fa';
 
-export default Modal
+const Modal = () => (
+  <section className="modal-overlay">
+    <section className="modal-container">
+      <h3>modal</h3>
+      <button type="button" className="close-modal-btn">
+        <FaTimes />
+      </button>
+    </section>
+  </section>
+);
+
+export default Modal;
