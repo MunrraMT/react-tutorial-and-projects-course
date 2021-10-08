@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 
 import { links, social } from './data';
@@ -6,6 +6,21 @@ import logo from './logo.svg';
 
 const Navbar = () => {
   const [showLinks, setShowLinks] = useState(false);
+
+  const linksContainerRef = useRef(null);
+  const linksRef = useRef(null);
+
+  useEffect(() => {
+    const linksHeight = linksRef.current.getBoundingClientRect().height;
+
+    if (showLinks) {
+      linksContainerRef.current.style.height = `${linksHeight}px`;
+    }
+
+    if (!showLinks) {
+      linksContainerRef.current.style.height = '0px';
+    }
+  }, [showLinks]);
 
   const handleClick = () => {
     setShowLinks((prev) => !prev);
@@ -21,8 +36,8 @@ const Navbar = () => {
           </button>
         </header>
 
-        <section className={`links-container ${showLinks && 'show-container'}`}>
-          <ul className="links">
+        <section className="links-container" ref={linksContainerRef}>
+          <ul className="links" ref={linksRef}>
             {links.map((link) => (
               <li key={link.id}>
                 <a href={link.url}>{link.text}</a>
