@@ -31,3 +31,5 @@ All Project Intros are available for preview.
   - [Grocery Bud](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/grocery-bud)
 
   - [Navbar](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/navbar)
+
+  - [SideBar / Modal](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/sidebar-modal)
