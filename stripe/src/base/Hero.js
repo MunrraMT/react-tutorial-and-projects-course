@@ -5,6 +5,8 @@ import { useGlobalContext } from './Context';
 const Hero = () => {
   const data = useGlobalContext();
 
+  console.dir(data);
+
   return <h2>hero component</h2>;
 };
 
