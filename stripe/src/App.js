@@ -1,8 +1,16 @@
+import Hero from './base/Hero';
+import Navbar from './base/Navbar';
+import Sidebar from './base/Sidebar';
+import Submenu from './base/Submenu';
+
 function App() {
   return (
-    <div className="App">
-      <h1>Stripe</h1>
-    </div>
+    <>
+      <Navbar />
+      <Sidebar />
+      <Hero />
+      <Submenu />
+    </>
   );
 }
 
