@@ -29,3 +29,5 @@ All Project Intros are available for preview.
   - [Color Generator](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/color-generator)
 
   - [Grocery Bud](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/grocery-bud)
+
+  - [Navbar](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/navbar)
