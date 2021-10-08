@@ -21,17 +21,15 @@ const Navbar = () => {
           </button>
         </header>
 
-        {showLinks && (
-          <section className="links-container show-container">
-            <ul className="links">
-              {links.map((link) => (
-                <li key={link.id}>
-                  <a href={link.url}>{link.text}</a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
+        <section className={`links-container ${showLinks && 'show-container'}`}>
+          <ul className="links">
+            {links.map((link) => (
+              <li key={link.id}>
+                <a href={link.url}>{link.text}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <ul className="social-icons">
           {social.map((item) => (
