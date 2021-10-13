@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { FaTimes } from 'react-icons/fa';
 
 import sublinks from './data';

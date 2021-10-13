@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { FaBars } from 'react-icons/fa';
 
 import { useGlobalContext } from './Context';
@@ -6,7 +5,11 @@ import sublinks from './data';
 import logo from './images/logo.svg';
 
 const Navbar = () => {
-  const { isSubmenuOpen, toggleSidebarOpen } = useGlobalContext();
+  const { toggleSidebarOpen, toggleSubmenuOpen } = useGlobalContext();
+
+  const displaySubmenu = () => {
+    toggleSubmenuOpen();
+  };
 
   return (
     <nav className="nav">
@@ -25,7 +28,12 @@ const Navbar = () => {
         <ul className="nav-links">
           {sublinks.map((link) => (
             <li key={link.page}>
-              <button type="button" className="link-btn">
+              <button
+                type="button"
+                className="link-btn"
+                onMouseOver={displaySubmenu}
+                onFocus={displaySubmenu}
+              >
                 {link.page}
               </button>
             </li>
