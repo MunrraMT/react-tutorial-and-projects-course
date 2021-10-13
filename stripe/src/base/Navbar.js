@@ -6,7 +6,7 @@ import sublinks from './data';
 import logo from './images/logo.svg';
 
 const Navbar = () => {
-  const { isSubmenuOpen, toggleSubmenuOpen } = useGlobalContext();
+  const { isSubmenuOpen, toggleSidebarOpen } = useGlobalContext();
 
   return (
     <nav className="nav">
@@ -16,7 +16,7 @@ const Navbar = () => {
           <button
             type="button"
             className="btn toggle-btn"
-            onClick={toggleSubmenuOpen}
+            onClick={toggleSidebarOpen}
           >
             <FaBars />
           </button>

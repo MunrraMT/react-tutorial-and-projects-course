@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import phoneImg from './images/phone.svg';
 
 import { useGlobalContext } from './Context';
