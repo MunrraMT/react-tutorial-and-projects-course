@@ -1,5 +1,8 @@
-import { node } from 'prop-types';
 import { createContext, useContext, useState } from 'react';
+
+import { node } from 'prop-types';
+
+import sublinks from './data';
 
 const AppContext = createContext();
 
@@ -10,18 +13,19 @@ const AppProvider = ({ children }) => {
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
 
   const [location, setLocation] = useState({});
+  const [page, setPage] = useState({ page: '', links: [] });
 
   const toggleSidebarOpen = () => {
     setIsSidebarOpen((prev) => !prev);
   };
 
   const openSubmenu = (text, coordinates) => {
+    setPage(sublinks.find((item) => item.page === text));
     setLocation(coordinates);
     setIsSubmenuOpen(true);
   };
 
-  const closeSubmenu = (text, coordinates) => {
-    setLocation(coordinates);
+  const closeSubmenu = () => {
     setIsSubmenuOpen(false);
   };
 
@@ -34,6 +38,7 @@ const AppProvider = ({ children }) => {
         openSubmenu,
         closeSubmenu,
         location,
+        page,
       }}
     >
       {children}
