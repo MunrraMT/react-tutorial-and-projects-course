@@ -5,7 +5,7 @@ import sublinks from './data';
 import logo from './images/logo.svg';
 
 const Navbar = () => {
-  const { toggleSidebarOpen, openSubmenu } = useGlobalContext();
+  const { toggleSidebarOpen, openSubmenu, closeSubmenu } = useGlobalContext();
 
   const displaySubmenu = (e) => {
     const page = e.target.textContent;
@@ -16,8 +16,14 @@ const Navbar = () => {
     openSubmenu(page, { center, bottom });
   };
 
+  const handleSubmenu = (e) => {
+    if (!e.target.classList.contains('link-btn')) {
+      closeSubmenu();
+    }
+  };
+
   return (
-    <nav className="nav">
+    <nav className="nav" onMouseOver={handleSubmenu} onFocus={handleSubmenu}>
       <section className="nav-center">
         <header className="nav-header">
           <img src={logo} alt="logo" className="nav-logo" />
