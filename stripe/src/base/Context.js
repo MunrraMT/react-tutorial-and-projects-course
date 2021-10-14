@@ -9,16 +9,20 @@ const AppProvider = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isSubmenuOpen, setIsSubmenuOpen] = useState(false);
 
-  const toggle = (state) => {
-    state((prev) => !prev);
-  };
+  const [location, setLocation] = useState({});
 
   const toggleSidebarOpen = () => {
-    toggle(setIsSidebarOpen);
+    setIsSidebarOpen((prev) => !prev);
   };
 
-  const toggleSubmenuOpen = () => {
-    toggle(setIsSubmenuOpen);
+  const openSubmenu = (text, coordinates) => {
+    setLocation(coordinates);
+    setIsSubmenuOpen(true);
+  };
+
+  const closeSubmenu = (text, coordinates) => {
+    setLocation(coordinates);
+    setIsSubmenuOpen(false);
   };
 
   return (
@@ -27,7 +31,9 @@ const AppProvider = ({ children }) => {
         isSidebarOpen,
         toggleSidebarOpen,
         isSubmenuOpen,
-        toggleSubmenuOpen,
+        openSubmenu,
+        closeSubmenu,
+        location,
       }}
     >
       {children}

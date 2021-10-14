@@ -5,10 +5,15 @@ import sublinks from './data';
 import logo from './images/logo.svg';
 
 const Navbar = () => {
-  const { toggleSidebarOpen, toggleSubmenuOpen } = useGlobalContext();
+  const { toggleSidebarOpen, openSubmenu } = useGlobalContext();
 
-  const displaySubmenu = () => {
-    toggleSubmenuOpen();
+  const displaySubmenu = (e) => {
+    const page = e.target.textContent;
+    const tempBtn = e.target.getBoundingClientRect();
+    const center = (tempBtn.left + tempBtn.right) / 2;
+    const bottom = tempBtn.bottom - 3;
+
+    openSubmenu(page, { center, bottom });
   };
 
   return (
