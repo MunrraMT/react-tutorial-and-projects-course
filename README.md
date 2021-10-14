@@ -33,3 +33,5 @@ All Project Intros are available for preview.
   - [Navbar](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/navbar)
 
   - [SideBar / Modal](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/sidebar-modal)
+
+  - [Stripe Clone](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/stripe)
