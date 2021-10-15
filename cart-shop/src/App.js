@@ -1,8 +1,23 @@
+/* eslint-disable */
+import React from 'react';
+
+import { useGlobalContext } from './base/context';
+import Navbar from './base/Navbar';
+import CartContainer from './base/CartContainer';
+
 function App() {
+  // if (loading) {
+  //   return (
+  //     <div className='loading'>
+  //       <h1>Loading...</h1>
+  //     </div>
+  //   )
+  // }
   return (
-    <div className="App">
-      <h1>teste</h1>
-    </div>
+    <main>
+      <Navbar />
+      <CartContainer />
+    </main>
   );
 }
 
