@@ -1,21 +1,28 @@
-/* eslint-disable */
 const reducer = (state, action) => {
   switch (action.type) {
+    case 'LOADING': {
+      return { ...state, loading: true };
+    }
+
+    case 'DISPLAY_ITEMS': {
+      return { ...state, cart: action.payload, loading: false };
+    }
+
     case 'CLEAR_CART': {
       return { ...state, cart: [] };
     }
 
     case 'REMOVE_ITEM': {
-      const newCart = state.cart.filter((cartItem) => {
-        return Number(cartItem.id) !== Number(action.payload);
-      });
+      const newCart = state.cart.filter(
+        (cartItem) => cartItem.id !== action.payload,
+      );
 
       return { ...state, cart: newCart };
     }
 
     case 'INCREASE_ITEM': {
       const newCart = state.cart.map((cartItem) => {
-        if (Number(cartItem.id) === Number(action.payload)) {
+        if (cartItem.id === action.payload) {
           return { ...cartItem, amount: cartItem.amount + 1 };
         }
 
@@ -27,7 +34,7 @@ const reducer = (state, action) => {
 
     case 'DECREASE_ITEM': {
       const newCart = state.cart.map((cartItem) => {
-        if (Number(cartItem.id) === Number(action.payload)) {
+        if (cartItem.id === action.payload) {
           return { ...cartItem, amount: cartItem.amount - 1 };
         }
 
@@ -44,7 +51,7 @@ const reducer = (state, action) => {
     case 'GET_TOTAL': {
       const newTotal = state.cart.reduce(
         (accumulator, currentValue) =>
-          (accumulator += currentValue.price * currentValue.amount),
+          accumulator + currentValue.price * currentValue.amount,
         0,
       );
 
@@ -53,7 +60,7 @@ const reducer = (state, action) => {
 
     case 'GET_AMOUNT': {
       const newAmount = state.cart.reduce(
-        (accumulator, currentValue) => (accumulator += currentValue.amount),
+        (accumulator, currentValue) => accumulator + currentValue.amount,
         0,
       );
 
