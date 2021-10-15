@@ -41,6 +41,25 @@ const reducer = (state, action) => {
       return { ...state, cart: removedNegativeItems };
     }
 
+    case 'GET_TOTAL': {
+      const newTotal = state.cart.reduce(
+        (accumulator, currentValue) =>
+          (accumulator += currentValue.price * currentValue.amount),
+        0,
+      );
+
+      return { ...state, total: Number(newTotal).toFixed(2) };
+    }
+
+    case 'GET_AMOUNT': {
+      const newAmount = state.cart.reduce(
+        (accumulator, currentValue) => (accumulator += currentValue.amount),
+        0,
+      );
+
+      return { ...state, amount: newAmount };
+    }
+
     default:
       break;
   }

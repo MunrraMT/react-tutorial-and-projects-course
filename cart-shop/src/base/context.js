@@ -1,5 +1,11 @@
 /* eslint-disable */
-import { useContext, createContext, useReducer } from 'react';
+import {
+  useContext,
+  createContext,
+  useReducer,
+  useState,
+  useEffect,
+} from 'react';
 
 import { node } from 'prop-types';
 
@@ -20,6 +26,11 @@ const initialState = {
 const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  useEffect(() => {
+    dispatch({ type: 'GET_TOTAL' });
+    dispatch({ type: 'GET_AMOUNT' });
+  }, [state.cart]);
+
   const clearCart = () => {
     dispatch({ type: 'CLEAR_CART' });
   };
@@ -38,7 +49,13 @@ const AppProvider = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ ...state, clearCart, removeItem, increaseItem, decreaseItem }}
+      value={{
+        ...state,
+        clearCart,
+        removeItem,
+        increaseItem,
+        decreaseItem,
+      }}
     >
       {children}
     </AppContext.Provider>
