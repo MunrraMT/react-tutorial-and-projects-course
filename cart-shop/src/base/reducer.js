@@ -5,6 +5,14 @@ const reducer = (state, action) => {
       return { ...state, cart: [] };
     }
 
+    case 'REMOVE_ITEM': {
+      const newCart = state.cart.filter((item) => {
+        return item.id !== action.payload;
+      });
+
+      return { ...state, cart: newCart };
+    }
+
     default:
       break;
   }
