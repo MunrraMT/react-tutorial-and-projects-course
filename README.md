@@ -35,3 +35,5 @@ All Project Intros are available for preview.
   - [SideBar / Modal](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/sidebar-modal)
 
   - [Stripe Clone](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/stripe)
+
+  - [Cart Shop](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/cart-shop)
