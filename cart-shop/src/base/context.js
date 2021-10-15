@@ -1,26 +1,26 @@
 /* eslint-disable */
-import { useState, useContext, createContext } from 'react';
+import { useContext, createContext, useReducer } from 'react';
 
 import { node } from 'prop-types';
 
 import cartItems from './data';
+import reducer from './reducer';
 
 const url = 'https://course-api.com/react-useReducer-cart-project';
 
 const AppContext = createContext();
 
-const AppProvider = ({ children }) => {
-  const [cart, setCart] = useState(cartItems);
+const initialState = {
+  loading: false,
+  cart: cartItems,
+  total: 0,
+  amount: 0,
+};
 
-  return (
-    <AppContext.Provider
-      value={{
-        cart,
-      }}
-    >
-      {children}
-    </AppContext.Provider>
-  );
+const AppProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return <AppContext.Provider value={state}>{children}</AppContext.Provider>;
 };
 
 AppProvider.propTypes = {
