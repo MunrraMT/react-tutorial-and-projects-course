@@ -25,6 +25,22 @@ const reducer = (state, action) => {
       return { ...state, cart: newCart };
     }
 
+    case 'DECREASE_ITEM': {
+      const newCart = state.cart.map((cartItem) => {
+        if (Number(cartItem.id) === Number(action.payload)) {
+          return { ...cartItem, amount: cartItem.amount - 1 };
+        }
+
+        return cartItem;
+      });
+
+      const removedNegativeItems = newCart.filter(
+        (cartItem) => Number(cartItem.amount) > 0,
+      );
+
+      return { ...state, cart: removedNegativeItems };
+    }
+
     default:
       break;
   }
