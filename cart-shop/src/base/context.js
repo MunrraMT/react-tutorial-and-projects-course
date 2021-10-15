@@ -44,6 +44,10 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'GET_AMOUNT' });
   }, [state.cart]);
 
+  const toggleAmount = (id, type) => {
+    dispatch({ type: 'TOGGLE_AMOUNT', payload: { id, type } });
+  };
+
   const clearCart = () => {
     dispatch({ type: 'CLEAR_CART' });
   };
@@ -52,22 +56,13 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'REMOVE_ITEM', payload: id });
   };
 
-  const increaseItem = (id) => {
-    dispatch({ type: 'INCREASE_ITEM', payload: id });
-  };
-
-  const decreaseItem = (id) => {
-    dispatch({ type: 'DECREASE_ITEM', payload: id });
-  };
-
   return (
     <AppContext.Provider
       value={{
         ...state,
         clearCart,
         removeItem,
-        increaseItem,
-        decreaseItem,
+        toggleAmount,
       }}
     >
       {children}

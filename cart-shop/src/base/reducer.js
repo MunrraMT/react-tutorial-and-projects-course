@@ -20,22 +20,16 @@ const reducer = (state, action) => {
       return { ...state, cart: newCart };
     }
 
-    case 'INCREASE_ITEM': {
+    case 'TOGGLE_AMOUNT': {
       const newCart = state.cart.map((cartItem) => {
-        if (cartItem.id === action.payload) {
-          return { ...cartItem, amount: cartItem.amount + 1 };
-        }
+        if (cartItem.id === action.payload.id) {
+          if (action.payload.type === 'increase') {
+            return { ...cartItem, amount: Number(cartItem.amount) + 1 };
+          }
 
-        return cartItem;
-      });
-
-      return { ...state, cart: newCart };
-    }
-
-    case 'DECREASE_ITEM': {
-      const newCart = state.cart.map((cartItem) => {
-        if (cartItem.id === action.payload) {
-          return { ...cartItem, amount: cartItem.amount - 1 };
+          if (action.payload.type === 'decrease') {
+            return { ...cartItem, amount: Number(cartItem.amount) - 1 };
+          }
         }
 
         return cartItem;
