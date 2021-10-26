@@ -1,14 +1,39 @@
-/* eslint-disable */
-
+import { useEffect, useRef } from 'react';
 import { useGlobalContext } from '../context';
 
 const SearchForm = () => {
   const { setSearchTerm } = useGlobalContext();
 
+  const searchValue = useRef(null);
+
+  useEffect(() => {
+    searchValue.current.focus();
+  }, []);
+
+  const handleChange = () => {
+    setSearchTerm(searchValue.current.value);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <div>
-      <h2>search form component</h2>
-    </div>
+    <section className="section search">
+      <form className="search-form" onSubmit={handleSubmit}>
+        <section className="form-control">
+          <label htmlFor="name">
+            search youuur favorite cocktail
+            <input
+              type="text"
+              id="name"
+              ref={searchValue}
+              onChange={handleChange}
+            />
+          </label>
+        </section>
+      </form>
+    </section>
   );
 };
 
