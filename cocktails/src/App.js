@@ -10,10 +10,12 @@ function App() {
   return (
     <BrowserRouter>
       <Navbar />
+
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/cocktail/:id" component={SingleCocktail} />
+
         <Route path="*" component={Error} />
       </Switch>
     </BrowserRouter>
