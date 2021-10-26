@@ -16,31 +16,31 @@ All Project Intros are available for preview.
 
   <td width="200">
 
-[Birthday Reminder](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/birthday-reminder)
+[Birthday Reminder](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-5/birthday-reminder)
 
   </td>
 
   <td width="200">
 
-[Tours](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/tours)
+[Tours](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-5/tours)
 
   </td>
 
   <td width="200">
 
-[Reviews](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/reviews)
+[Reviews](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-5/reviews)
 
   </td>
 
   <td width="200">
 
-[Accordion](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/accordion)
+[Accordion](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-5/accordion)
 
   </td>
 
   <td width="200">
 
-[Menu](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/menu)
+[Menu](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-5/menu)
 
   </td>
 
@@ -49,30 +49,30 @@ All Project Intros are available for preview.
 
   <td>
 
-[Tabs](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/tabs)
+[Tabs](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-5/tabs)
 
   </td>
 
   <td>
 
-[Slider](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/slider)
+[Slider](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-5/slider)
 
   </td>
 
   <td>
 
-[Lorem Ipsum](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/lorem-ipsum)
+[Lorem Ipsum](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-5/lorem-ipsum)
 
   </td>
 
   <td>
 
-[Color Generator](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/color-generator)
+[Color Generator](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-5/color-generator)
 
   </td>
   <td>
 
-[Grocery Bud](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/grocery-bud)
+[Grocery Bud](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-5/grocery-bud)
 
   </td>
 
@@ -81,27 +81,27 @@ All Project Intros are available for preview.
 
   <td>
 
-[Navbar](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/navbar)
+[Navbar](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-5/navbar)
 
   </td>
   <td>
 
-[SideBar / Modal](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/sidebar-modal)
+[SideBar / Modal](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-5/sidebar-modal)
 
   </td>
   <td>
 
-[Stripe Clone](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/stripe)
+[Stripe Clone](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-5/stripe)
 
   </td>
   <td>
 
-[Cart Shop](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/cart-shop)
+[Cart Shop](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-5/cart-shop)
 
   </td>
   <td>
 
-[Cocktails](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/cocktails)
+[Cocktails](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-5/cocktails)
 
   </td>
 </tr>
