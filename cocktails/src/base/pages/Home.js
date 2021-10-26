@@ -1,12 +1,11 @@
-/* eslint-disable */
-
 import CocktailList from '../components/CocktailList';
 import SearchForm from '../components/SearchForm';
 
 const Home = () => (
-  <div>
-    <h2>home page</h2>
-  </div>
+  <main>
+    <SearchForm />
+    <CocktailList />
+  </main>
 );
 
 export default Home;

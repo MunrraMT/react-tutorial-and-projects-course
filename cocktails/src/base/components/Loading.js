@@ -1,7 +1,3 @@
-/* eslint-disable */
-
-const Loading = () => {
-  return <div className="loader"></div>;
-};
+const Loading = () => <div className="loader" />;
 
 export default Loading;
