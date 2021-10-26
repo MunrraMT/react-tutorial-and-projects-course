@@ -8,34 +8,104 @@ React was released by Facebook's web development team in 2013 as a view library.
 
 All Project Intros are available for preview.
 
-- Basic Projects:
+### Basic Projects:
 
-  - [Birthday Reminder](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/birthday-reminder)
+<table align="center">
 
-  - [Tours](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/tours)
+<tr align="middle">
 
-  - [Reviews](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/reviews)
+  <td width="200">
 
-  - [Accordion](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/accordion)
+[Birthday Reminder](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/birthday-reminder)
 
-  - [Menu](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/menu)
+  </td>
 
-  - [Tabs](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/tabs)
+  <td width="200">
 
-  - [Slider](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/slider)
+[Tours](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/tours)
 
-  - [Lorem Ipsum](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/lorem-ipsum)
+  </td>
 
-  - [Color Generator](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/color-generator)
+  <td width="200">
 
-  - [Grocery Bud](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/grocery-bud)
+[Reviews](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/reviews)
 
-  - [Navbar](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/navbar)
+  </td>
 
-  - [SideBar / Modal](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/sidebar-modal)
+  <td width="200">
 
-  - [Stripe Clone](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/stripe)
+[Accordion](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/accordion)
 
-  - [Cart Shop](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/cart-shop)
+  </td>
 
-  - [Cocktails](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/cocktails)
+  <td width="200">
+
+[Menu](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/menu)
+
+  </td>
+
+</tr>
+<tr align="center">
+
+  <td>
+
+[Tabs](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/tabs)
+
+  </td>
+
+  <td>
+
+[Slider](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/slider)
+
+  </td>
+
+  <td>
+
+[Lorem Ipsum](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/lorem-ipsum)
+
+  </td>
+
+  <td>
+
+[Color Generator](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/color-generator)
+
+  </td>
+  <td>
+
+[Grocery Bud](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/grocery-bud)
+
+  </td>
+
+</tr>
+<tr align="center">
+
+  <td>
+
+[Navbar](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/navbar)
+
+  </td>
+  <td>
+
+[SideBar / Modal](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/sidebar-modal)
+
+  </td>
+  <td>
+
+[Stripe Clone](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/stripe)
+
+  </td>
+  <td>
+
+[Cart Shop](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/cart-shop)
+
+  </td>
+  <td>
+
+[Cocktails](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/cocktails)
+
+  </td>
+</tr>
+
+</table>
+
+### Additional Projects (API and External Libraries):
