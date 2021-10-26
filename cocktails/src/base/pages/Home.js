@@ -1,13 +1,12 @@
-import React from 'react'
-import CocktailList from '../components/CocktailList'
-import SearchForm from '../components/SearchForm'
+/* eslint-disable */
 
-const Home = () => {
-  return (
-    <div>
-      <h2>home page</h2>
-    </div>
-  )
-}
+import CocktailList from '../components/CocktailList';
+import SearchForm from '../components/SearchForm';
 
-export default Home
+const Home = () => (
+  <div>
+    <h2>home page</h2>
+  </div>
+);
+
+export default Home;
