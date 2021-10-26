@@ -108,4 +108,4 @@ All Project Intros are available for preview.
 
 </table>
 
-### Additional Projects (API and External Libraries):
+### Advanced Projects (API and External Libraries):
