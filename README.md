@@ -37,3 +37,5 @@ All Project Intros are available for preview.
   - [Stripe Clone](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/stripe)
 
   - [Cart Shop](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/cart-shop)
+
+  - [Cocktails](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/cocktails)
