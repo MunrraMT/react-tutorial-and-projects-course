@@ -1,8 +1,24 @@
+import { useState } from 'react';
+
 function App() {
+  const [markdown, setMarkdown] = useState('## markdown preview');
+
+  const handleChange = (e) => {
+    setMarkdown(e.target.value);
+  };
+
   return (
-    <div className="App">
-      <h1>Teste</h1>
-    </div>
+    <main>
+      <section className="markdown">
+        <textarea
+          className="input"
+          value={markdown}
+          onChange={handleChange}
+          style={{ resize: 'none' }}
+        />
+        <article className="result">{markdown}</article>
+      </section>
+    </main>
   );
 }
 
