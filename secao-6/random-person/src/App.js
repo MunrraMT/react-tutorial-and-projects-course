@@ -51,6 +51,7 @@ function App() {
     };
 
     setPerson(newPerson);
+    setTitle('name');
     setValue(newPerson.name);
     setLoading(false);
   };
@@ -60,7 +61,12 @@ function App() {
   }, []);
 
   const handleMouseOver = (e) => {
-    console.log(e.target);
+    if (e.target.tagName === 'BUTTON') {
+      const textLabel = e.target.dataset.label;
+
+      setTitle(textLabel);
+      setValue(person[textLabel]);
+    }
   };
 
   return (
