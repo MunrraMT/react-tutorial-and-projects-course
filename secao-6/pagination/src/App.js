@@ -1,10 +1,9 @@
 /* eslint-disable */
 
 import { useState, useEffect } from 'react';
-import Follower from './base/Follower';
 
 import useFetch from './base/useFetch';
-// import Follower from './Follower';
+import Follower from './base/Follower';
 
 const url = 'https://api.github.com/users/john-smilga/followers?per_page=100';
 
