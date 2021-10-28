@@ -109,3 +109,23 @@ All Project Intros are available for preview.
 </table>
 
 ### Advanced Projects (API and External Libraries):
+
+<table align="center">
+
+<tr align="middle">
+
+<td width="200">
+
+[Markdown Realtime](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-6/markdown)
+
+</td>
+
+<td width="200">
+
+[Random Person](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-6/radom-person)
+
+</td>
+
+</tr>
+
+</table>
