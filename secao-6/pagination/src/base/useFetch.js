@@ -22,4 +22,4 @@ const useFetch = (url) => {
   return [loading, data];
 };
 
-export default useFetch();
+export default useFetch;
