@@ -8,7 +8,14 @@ import Follower from './base/Follower';
 const url = 'https://api.github.com/users/john-smilga/followers?per_page=100';
 
 function App() {
+  const [page, setPage] = useState(0);
+  const [followers, setFollowers] = useState([]);
+
   const [loading, data] = useFetch(url);
+
+  useEffect(() => {
+    setFollowers(data[page]);
+  }, [data, page]);
 
   return (
     <main>
@@ -19,14 +26,15 @@ function App() {
 
       <section className="followers">
         <section className="container">
-          {data.map((person) => (
-            <Follower
-              key={person.id}
-              image={person['avatar_url']}
-              link={person['html_url']}
-              name={person['login']}
-            />
-          ))}
+          {!loading &&
+            followers.map((person) => (
+              <Follower
+                key={person.id}
+                image={person['avatar_url']}
+                link={person['html_url']}
+                name={person['login']}
+              />
+            ))}
         </section>
       </section>
     </main>
