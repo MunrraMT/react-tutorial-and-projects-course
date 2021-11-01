@@ -11,11 +11,15 @@ function App() {
   const [page, setPage] = useState(0);
   const [followers, setFollowers] = useState([]);
 
-  const [loading, data] = useFetch(url);
+  const [loading, data] = useFetch('./mock.json', 8);
 
   useEffect(() => {
-    setFollowers(data[page]);
+    if (data) setFollowers(data[page]);
   }, [data, page]);
+
+  const handleClickPage = (index) => {
+    setPage(index);
+  };
 
   return (
     <main>
@@ -24,10 +28,10 @@ function App() {
         <div className="underline"></div>
       </section>
 
-      <section className="followers">
-        <section className="container">
-          {!loading &&
-            followers.map((person) => (
+      {!loading && (
+        <section className="followers">
+          <section className="container">
+            {followers.map((person) => (
               <Follower
                 key={person.id}
                 image={person['avatar_url']}
@@ -35,8 +39,22 @@ function App() {
                 name={person['login']}
               />
             ))}
+          </section>
+
+          <footer className="btn-container">
+            {data.map((_, index) => (
+              <button
+                type="button"
+                key={index}
+                className={`page-btn ${index === page && 'active-btn'}`}
+                onClick={() => handleClickPage(index)}
+              >
+                {Number(index) + 1}
+              </button>
+            ))}
+          </footer>
         </section>
-      </section>
+      )}
     </main>
   );
 }

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import paginate from './utils';
 
-const useFetch = (url) => {
+const useFetch = (url, number) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -12,7 +12,7 @@ const useFetch = (url) => {
     const response = await fetch(url);
     const dataFetch = await response.json();
 
-    setData(paginate(dataFetch, 8));
+    setData(paginate(dataFetch, number));
     setLoading(false);
   };
 
