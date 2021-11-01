@@ -14,11 +14,27 @@ function App() {
   const [loading, data] = useFetch('./mock.json', 8);
 
   useEffect(() => {
-    if (data) setFollowers(data[page]);
+    setFollowers(data[page]);
   }, [data, page]);
 
   const handleClickPage = (index) => {
     setPage(index);
+  };
+
+  const handleClickIncreasePage = () => {
+    if (page === data.length - 1) {
+      setPage(0);
+    } else {
+      setPage((prev) => Number(prev) + 1);
+    }
+  };
+
+  const handleClickDecreasePage = () => {
+    if (page === 0) {
+      setPage(data.length - 1);
+    } else {
+      setPage((prev) => prev - 1);
+    }
   };
 
   return (
@@ -42,6 +58,14 @@ function App() {
           </section>
 
           <footer className="btn-container">
+            <button
+              type="button"
+              className="prev-btn"
+              onClick={handleClickDecreasePage}
+            >
+              Prev
+            </button>
+
             {data.map((_, index) => (
               <button
                 type="button"
@@ -52,6 +76,14 @@ function App() {
                 {Number(index) + 1}
               </button>
             ))}
+
+            <button
+              type="button"
+              className="next-btn"
+              onClick={handleClickIncreasePage}
+            >
+              Next
+            </button>
           </footer>
         </section>
       )}
