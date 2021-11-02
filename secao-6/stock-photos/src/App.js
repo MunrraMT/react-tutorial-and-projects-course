@@ -5,7 +5,7 @@ import { FaSearch } from 'react-icons/fa';
 
 import Photo from './base/Photo';
 
-// const clientID = `?client_id=${process.env.REACT_APP_ACCESS_KEY}`;
+const clientID = `?client_id=${process.env.REACT_APP_ACCESS_KEY}`;
 
 const baseUrl = `https://api.unsplash.com/`;
 const mainEndPoint = `/photos/`;
@@ -19,7 +19,7 @@ function App() {
     setLoading(true);
 
     try {
-      const url = `${baseUrl}${params}?client_id=JS5gT-dtNwkEZQ4swt3cspvFm8VdVruRAP_IMlJSxk4`;
+      const url = `${baseUrl}${params}${clientID}`;
 
       const response = await fetch(url);
       const data = await response.json();
