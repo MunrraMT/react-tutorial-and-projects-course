@@ -37,6 +37,24 @@ function App() {
     );
   }, []);
 
+  useEffect(() => {
+    const loadScrolling = () => {
+      const innerHeight = Number(window.innerHeight);
+      const scrolledY = Number(window.scrollY);
+      const innerBody = Number(document.body.scrollHeight);
+
+      if (innerHeight + scrolledY >= innerBody) {
+        console.log('loading!');
+      }
+    };
+
+    window.addEventListener('scroll', loadScrolling);
+
+    return () => {
+      window.removeEventListener('scroll', loadScrolling);
+    };
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
