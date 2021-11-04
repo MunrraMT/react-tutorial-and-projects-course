@@ -4,10 +4,20 @@ import data from './base/data';
 import Article from './base/Article';
 
 function App() {
-  const [theme, setTheme] = useState('light-theme');
+  const [theme, setTheme] = useState(() => {
+    const localTheme = localStorage.getItem('theme');
+
+    if (localTheme) return localTheme;
+
+    return 'light-theme';
+  });
 
   useEffect(() => {
     document.documentElement.className = theme;
+  }, [theme]);
+
+  useEffect(() => {
+    localStorage.setItem('theme', theme);
   }, [theme]);
 
   const handleTheme = () => {
