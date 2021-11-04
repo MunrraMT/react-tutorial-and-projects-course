@@ -132,6 +132,12 @@ All Project Intros are available for preview.
 
 </td>
 
+<td width="200">
+
+[Stock Photos](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-6/stock-photos)
+
+</td>
+
 </tr>
 
 </table>
