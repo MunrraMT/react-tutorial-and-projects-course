@@ -9,6 +9,7 @@ import {
   isValidImage,
   isValidPortfolioUrl,
 } from './base/utils/isValid';
+import loadScrolling from './base/utils/loadScrolling';
 
 const clientID = `?client_id=${process.env.REACT_APP_ACCESS_KEY}`;
 
@@ -22,6 +23,9 @@ function App() {
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState('');
 
+  const mainUrl = `${baseUrl}${mainEndPoint}${clientID}&page=${page}`;
+  const searchUrl = `${baseUrl}${searchEndPoint}${clientID}&page=${page}&query=${query}`;
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -33,8 +37,9 @@ function App() {
     const dataFetch = await response.json();
 
     setPhotos((prev) => {
-      if (query && page === 1) return dataFetch.results;
-      if (query && page > 1) return [...prev, ...dataFetch.results];
+      if (query !== '' && page === 1) return dataFetch.results;
+      if (query !== '' && page > 1) return [...prev, ...dataFetch.results];
+      if (query === '' && page === 1) return dataFetch;
 
       return [...prev, ...dataFetch];
     });
@@ -43,30 +48,18 @@ function App() {
   };
 
   useEffect(() => {
-    if (query) {
-      getPhotos(
-        `${baseUrl}${searchEndPoint}${clientID}&page=${page}&query=${query}`,
-      );
+    if (query !== '') {
+      getPhotos(searchUrl);
     } else {
-      getPhotos(`${baseUrl}${mainEndPoint}${clientID}&page=${page}`);
+      getPhotos(mainUrl);
     }
   }, [page]);
 
   useEffect(() => {
-    const loadScrolling = () => {
-      const innerHeight = Number(window.innerHeight);
-      const scrollTop = Number(document.documentElement.scrollTop);
-      const bodyScrollHeight = Number(document.documentElement.offsetHeight);
-
-      if (innerHeight + scrollTop === bodyScrollHeight) {
-        setPage((prev) => Number(prev) + 1);
-      }
-    };
-
-    window.addEventListener('scroll', loadScrolling);
+    window.addEventListener('scroll', () => loadScrolling(setPage));
 
     return () => {
-      window.removeEventListener('scroll', loadScrolling);
+      window.removeEventListener('scroll', () => loadScrolling(setPage));
     };
   }, []);
 
@@ -74,9 +67,12 @@ function App() {
     e.preventDefault();
 
     setPage(1);
-    getPhotos(
-      `${baseUrl}${searchEndPoint}${clientID}&page=${page}&query=${query}`,
-    );
+
+    if (query !== '') {
+      getPhotos(searchUrl);
+    } else {
+      getPhotos(mainUrl);
+    }
   };
 
   const handleChangeInput = (e) => {
