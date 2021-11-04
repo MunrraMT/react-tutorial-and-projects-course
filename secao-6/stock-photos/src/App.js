@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { useState, useEffect } from 'react';
 
 import { FaSearch } from 'react-icons/fa';
@@ -13,12 +12,17 @@ import {
 const clientID = `?client_id=${process.env.REACT_APP_ACCESS_KEY}`;
 
 const baseUrl = `https://api.unsplash.com/`;
-const mainEndPoint = `/photos/`;
-const searchEndPoint = `/search/photos/`;
+const mainEndPoint = `photos/`;
+// const searchEndPoint = `search/photos/`;
 
 function App() {
   const [loading, setLoading] = useState(true);
   const [photos, setPhotos] = useState([]);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const getPhotos = async (url) => {
     setLoading(true);
@@ -26,25 +30,25 @@ function App() {
     const response = await fetch(url);
     const dataFetch = await response.json();
 
-    setPhotos(dataFetch);
+    setPhotos((prev) => [...prev, ...dataFetch]);
     setLoading(false);
   };
 
   useEffect(() => {
     getPhotos(
-      // `${baseUrl}${mainEndPoint}${clientID}`,
-      './mock.json',
+      `${baseUrl}${mainEndPoint}${clientID}&page=${page}`,
+      // './mock.json',
     );
-  }, []);
+  }, [page]);
 
   useEffect(() => {
     const loadScrolling = () => {
       const innerHeight = Number(window.innerHeight);
-      const scrolledY = Number(window.scrollY);
-      const innerBody = Number(document.body.scrollHeight);
+      const scrollTop = Number(document.documentElement.scrollTop);
+      const bodyScrollHeight = Number(document.documentElement.offsetHeight);
 
-      if (innerHeight + scrolledY >= innerBody) {
-        console.log('loading!');
+      if (innerHeight + scrollTop === bodyScrollHeight) {
+        setPage((prev) => Number(prev) + 1);
       }
     };
 
@@ -73,31 +77,19 @@ function App() {
       <section className="photos">
         {loading && <h2 className="loading">loading...</h2>}
 
-        {!loading && (
+        {photos.length > 0 && (
           <section className="photos-center">
-            {photos.map(
-              ({
-                id,
-                urls: { regular },
-                alt_description,
-                likes,
-                user: {
-                  name,
-                  portfolio_url,
-                  profile_image: { medium },
-                },
-              }) => (
-                <Photo
-                  key={id}
-                  image={isValidImage(regular)}
-                  description={isValidDescription(alt_description)}
-                  name={name}
-                  likes={likes}
-                  portfolioUrl={isValidPortfolioUrl(portfolio_url)}
-                  userImage={medium}
-                />
-              ),
-            )}
+            {photos.map((photo) => (
+              <Photo
+                key={photo.id}
+                image={isValidImage(photo.urls.regular)}
+                description={isValidDescription(photo.alt_description)}
+                name={photo.user.name}
+                likes={photo.likes}
+                portfolioUrl={isValidPortfolioUrl(photo.user.portfolio_url)}
+                userImage={photo.user.profile_image.medium}
+              />
+            ))}
           </section>
         )}
       </section>
