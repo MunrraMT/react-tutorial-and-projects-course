@@ -1,6 +1,11 @@
-// import Form from './SearchForm'
-// import Movies from './Movies'
+import Form from './SearchForm';
+import Movies from './Movies';
 
-const Home = () => <h2>movie component</h2>;
+const Home = () => (
+  <main>
+    <Form />
+    <Movies />
+  </main>
+);
 
 export default Home;
