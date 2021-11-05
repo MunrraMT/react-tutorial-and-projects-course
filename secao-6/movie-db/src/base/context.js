@@ -3,7 +3,8 @@ import { createContext, useContext } from 'react';
 import { node } from 'prop-types';
 
 // make sure to use https
-export const API_ENDPOINT = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API_KEY}`;
+const API_ENDPOINT = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API_KEY}`;
+
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => (
@@ -15,6 +16,6 @@ AppProvider.propTypes = {
 };
 
 // make sure use
-export const useGlobalContext = () => useContext(AppContext);
+const useGlobalContext = () => useContext(AppContext);
 
-export { AppContext, AppProvider };
+export { AppProvider, useGlobalContext };
