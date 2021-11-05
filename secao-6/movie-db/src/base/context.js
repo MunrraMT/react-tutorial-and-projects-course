@@ -3,7 +3,7 @@ import { createContext, useContext } from 'react';
 import { node } from 'prop-types';
 
 // make sure to use https
-const API_ENDPOINT = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API_KEY}`;
+// const API_ENDPOINT = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_MOVIE_API_KEY}`;
 
 const AppContext = createContext();
 
