@@ -15,19 +15,20 @@ const Movies = () => {
 
   return (
     <section className="movies">
-      {movies.map(
-        ({ imdbID: id, Poster: poster, Title: title, Year: year }) => (
-          <Link to={`/${id}`} key={id} className="movie">
-            <article>
-              <img src={poster === 'N/A' ? noImage : poster} alt={title} />
-              <footer className="movie-info">
-                <h4 className="title">{title}</h4>
-                <p>{year}</p>
-              </footer>
-            </article>
-          </Link>
-        ),
-      )}
+      {movies &&
+        movies.map(
+          ({ imdbID: id, Poster: poster, Title: title, Year: year }) => (
+            <Link to={`/${id}`} key={id} className="movie">
+              <article>
+                <img src={poster === 'N/A' ? noImage : poster} alt={title} />
+                <footer className="movie-info">
+                  <h4 className="title">{title}</h4>
+                  <p>{year}</p>
+                </footer>
+              </article>
+            </Link>
+          ),
+        )}
     </section>
   );
 };

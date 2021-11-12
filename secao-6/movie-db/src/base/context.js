@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { createContext, useContext, useEffect, useState } from 'react';
 
 import { node } from 'prop-types';
@@ -27,7 +26,7 @@ const AppProvider = ({ children }) => {
       const response = await fetch(url);
       const data = await response.json();
 
-      if (data.Response) {
+      if (data.Response && data.Search) {
         setMovies(data.Search);
         setError({ show: false, msg: '' });
         setIsLoading(false);
@@ -52,7 +51,7 @@ const AppProvider = ({ children }) => {
 
   useEffect(() => {
     fetchMovies(urlConcat());
-  }, []);
+  }, [query]);
 
   return (
     <AppContext.Provider

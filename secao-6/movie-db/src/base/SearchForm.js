@@ -1,5 +1,28 @@
-// import { useGlobalContext } from './context'
+import { useGlobalContext } from './context';
 
-const SearchForm = () => <h2>search component</h2>;
+const SearchForm = () => {
+  const { query, setQuery, error } = useGlobalContext();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
+  const handleChangeQuery = (e) => {
+    setQuery((prev) => ({ ...prev, title: e.target.value }));
+  };
+
+  return (
+    <form className="search-form" onSubmit={handleSubmit}>
+      <h2>search movies</h2>
+      <input
+        type="text"
+        className="form-input"
+        value={query.title}
+        onChange={handleChangeQuery}
+      />
+      {error.show && <section className="error">{error.msg}</section>}
+    </form>
+  );
+};
 
 export default SearchForm;
