@@ -1,10 +1,6 @@
-/* eslint-disable no-unused-vars */
-
 import { Link } from 'react-router-dom';
-import { useGlobalContext } from './context';
 
-const url =
-  'https://upload.wikimedia.org/wikipedia/commons/f/fc/No_picture_available.png';
+import { useGlobalContext } from './context';
 
 const noImage = './No_image_available.svg';
 

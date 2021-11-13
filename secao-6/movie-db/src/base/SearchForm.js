@@ -8,7 +8,7 @@ const SearchForm = () => {
   };
 
   const handleChangeQuery = (e) => {
-    setQuery((prev) => ({ ...prev, title: e.target.value }));
+    setQuery(e.target.value);
   };
 
   return (
@@ -17,7 +17,7 @@ const SearchForm = () => {
       <input
         type="text"
         className="form-input"
-        value={query.title}
+        value={query}
         onChange={handleChangeQuery}
       />
       {error.show && <section className="error">{error.msg}</section>}
