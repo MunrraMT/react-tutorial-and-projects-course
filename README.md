@@ -148,6 +148,12 @@ All Project Intros are available for preview.
 
 </td>
 
+<td width="200">
+
+[Movie DB](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-6/movie-db)
+
+</td>
+
 </tr>
 
 </table>
