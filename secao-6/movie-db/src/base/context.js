@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 import { node } from 'prop-types';
 
@@ -10,16 +10,13 @@ const API_ENDPOINT = `https://www.omdbapi.com/?apikey=${process.env.REACT_APP_MO
 const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
-  const [movies, setMovies] = useState([]);
   const [query, setQuery] = useState('matrix');
 
-  const { data, isLoading, error } = useFetch(`${API_ENDPOINT}&s=${query}`);
-
-  useEffect(() => {
-    if (data.Search) {
-      setMovies(data.Search);
-    }
-  }, [data]);
+  const {
+    data: { Search: movies },
+    isLoading,
+    error,
+  } = useFetch(`${API_ENDPOINT}&s=${query}`);
 
   return (
     <AppContext.Provider
