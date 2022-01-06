@@ -1,9 +1,5 @@
-/* eslint-disable */
+// import { useGlobalContext } from './context'
 
-import { useGlobalContext } from './context';
-
-const Stories = () => {
-  return <h2>stories component</h2>;
-};
+const Stories = () => <h2>stories component</h2>;
 
 export default Stories;
