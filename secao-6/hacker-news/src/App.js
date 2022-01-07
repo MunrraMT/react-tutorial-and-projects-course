@@ -2,6 +2,16 @@
 // import Stories from './Stories';
 // import Buttons from './Buttons';
 
-const App = () => <h2>hacker news starter</h2>;
+import Buttons from './base/Buttons';
+import SearchForm from './base/SearchForm';
+import Stories from './base/Stories';
+
+const App = () => (
+  <>
+    <SearchForm />
+    <Buttons />
+    <Stories />
+  </>
+);
 
 export default App;
