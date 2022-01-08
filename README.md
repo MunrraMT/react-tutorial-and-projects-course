@@ -154,8 +154,12 @@ All Project Intros are available for preview.
 
 </td>
 
-</tr>
+<td width="200">
 
-teste
+[Hacker News](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-6/hacker-news)
+
+</td>
+
+</tr>
 
 </table>
