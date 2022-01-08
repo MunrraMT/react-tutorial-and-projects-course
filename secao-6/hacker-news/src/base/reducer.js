@@ -3,7 +3,10 @@ import {
   SET_STORIES,
   REMOVE_STORY,
   HANDLE_SEARCH,
+  HANDLE_PAGE,
 } from './actions';
+
+import { numberDecrease, numberIncrease } from '../utils/numberControl';
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -29,6 +32,15 @@ const reducer = (state, action) => {
         ...state,
         query: action.payload,
         page: 0,
+      };
+
+    case HANDLE_PAGE:
+      return {
+        ...state,
+        page:
+          action.payload === 'inc'
+            ? numberIncrease(state.page, Number(state.numberPages - 1))
+            : numberDecrease(state.page, Number(state.numberPages - 1)),
       };
 
     default:
