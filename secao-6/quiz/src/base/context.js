@@ -8,6 +8,7 @@ import { node } from 'prop-types';
 // }
 
 // const API_ENDPOINT = 'https://opentdb.com/api.php?'
+// const tempUrl = https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple
 
 // const url = ''
 
