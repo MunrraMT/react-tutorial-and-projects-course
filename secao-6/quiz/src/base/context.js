@@ -1,4 +1,6 @@
-import { useContext, createContext } from 'react';
+/* eslint-disable */
+
+import { useContext, createContext, useState } from 'react';
 import { node } from 'prop-types';
 
 // const table = {
@@ -14,9 +16,31 @@ import { node } from 'prop-types';
 
 const AppContext = createContext();
 
-const AppProvider = ({ children }) => (
-  <AppContext.Provider value="hello">{children}</AppContext.Provider>
-);
+const AppProvider = ({ children }) => {
+  const [waiting, setWaiting] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [questions, setQuestions] = useState([]);
+  const [index, setIndext] = useState(0);
+  const [correct, setCorrect] = useState(0);
+  const [error, setError] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  return (
+    <AppContext.Provider
+      value={{
+        waiting,
+        loading,
+        questions,
+        index,
+        correct,
+        error,
+        isModalOpen,
+      }}
+    >
+      {children}
+    </AppContext.Provider>
+  );
+};
 
 AppProvider.propTypes = {
   children: node.isRequired,

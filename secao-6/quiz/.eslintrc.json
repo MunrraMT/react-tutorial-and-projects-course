@@ -27,6 +27,7 @@
         "jsx-a11y"
     ],
     "rules": {
+        "react/jsx-no-constructed-context-values": 0,
         "react/function-component-definition": [
             2,
             {
