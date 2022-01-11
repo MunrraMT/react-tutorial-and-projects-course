@@ -1,0 +1,48 @@
+{
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "jest/globals": true
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "airbnb",
+        "prettier",
+        "plugin:jest/recommended",
+        "plugin:jest-dom/recommended",
+        "plugin:jsx-a11y/recommended"
+    ],
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "prettier",
+        "jest",
+        "jest-dom",
+        "jsx-a11y"
+    ],
+    "rules": {
+        "react/function-component-definition": [
+            2,
+            {
+                "namedComponents": "arrow-function",
+                "unnamedComponents": "arrow-function"
+            }
+        ],
+        "react/react-in-jsx-scope": 0,
+        "react/jsx-filename-extension": [
+            "warn",
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ]
+    }
+}
