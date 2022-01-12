@@ -1,6 +1,4 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
-
-import { useContext, createContext, useState } from 'react';
+import { useContext, createContext, useState, useMemo } from 'react';
 import { node } from 'prop-types';
 import axios from 'axios';
 
@@ -27,7 +25,7 @@ const AppProvider = ({ children }) => {
   const [error, setError] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [quiz, setQuiz] = useState({
-    amount: 10,
+    amount: 5,
     catergory: 'sports',
     difficulty: 'easy',
   });
@@ -67,14 +65,11 @@ const AppProvider = ({ children }) => {
   };
 
   const nextQuestion = () => {
-    setIndex((prev) => {
-      if (Number(index) === Number(numberQuestions) - 1) {
-        openModal();
-        return prev;
-      }
-
-      return Number(prev) + 1;
-    });
+    if (Number(index) === Number(numberQuestions) - 1) {
+      openModal();
+    } else {
+      setIndex((prev) => Number(prev) + 1);
+    }
   };
 
   const checkAnswer = (value) => {
@@ -100,27 +95,43 @@ const AppProvider = ({ children }) => {
     fetchQuestions(url);
   };
 
+  const contextValue = useMemo(
+    () => ({
+      waiting,
+      loading,
+      questions,
+      index,
+      correct,
+      error,
+      isModalOpen,
+      numberQuestions,
+      nextQuestion,
+      checkAnswer,
+      closeModal,
+      quiz,
+      handleChange,
+      handleSubmit,
+    }),
+    [
+      waiting,
+      loading,
+      questions,
+      index,
+      correct,
+      error,
+      isModalOpen,
+      numberQuestions,
+      nextQuestion,
+      checkAnswer,
+      closeModal,
+      quiz,
+      handleChange,
+      handleSubmit,
+    ],
+  );
+
   return (
-    <AppContext.Provider
-      value={{
-        waiting,
-        loading,
-        questions,
-        index,
-        correct,
-        error,
-        isModalOpen,
-        numberQuestions,
-        nextQuestion,
-        checkAnswer,
-        closeModal,
-        quiz,
-        handleChange,
-        handleSubmit,
-      }}
-    >
-      {children}
-    </AppContext.Provider>
+    <AppContext.Provider value={contextValue}>{children}</AppContext.Provider>
   );
 };
 
