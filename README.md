@@ -160,6 +160,12 @@ All Project Intros are available for preview.
 
 </td>
 
+<td width="200">
+
+[Quiz App](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/secao-6/quiz)
+
+</td>
+
 </tr>
 
 </table>
