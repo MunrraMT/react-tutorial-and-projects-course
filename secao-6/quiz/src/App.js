@@ -1,5 +1,4 @@
-/* eslint-disable */
-
+/* eslint-disable camelcase */
 import { useGlobalContext } from './base/context';
 import Loading from './base/Loading';
 import Modal from './base/Modal';

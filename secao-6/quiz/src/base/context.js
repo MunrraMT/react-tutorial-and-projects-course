@@ -1,20 +1,19 @@
-/* eslint-disable */
+/* eslint-disable react/jsx-no-constructed-context-values */
 
 import { useContext, createContext, useState } from 'react';
 import { node } from 'prop-types';
 import axios from 'axios';
 
-// const table = {
-//   sports: 21,
-//   history: 23,
-//   politics: 24,
-// }
+const table = {
+  sports: 21,
+  history: 23,
+  politics: 24,
+};
 
-// const API_ENDPOINT = 'https://opentdb.com/api.php?'
+const API_ENDPOINT = 'https://opentdb.com/api.php?';
+
 // const tempUrl =
 // 'https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple';
-
-// const url = ''
 
 const AppContext = createContext();
 
@@ -57,22 +56,6 @@ const AppProvider = ({ children }) => {
     }
   };
 
-  const nextQuestion = () => {
-    setIndex((prev) => {
-      if (Number(index) === Number(numberQuestions) - 1) {
-        openModal();
-        return prev;
-      } else {
-        return Number(prev) + 1;
-      }
-    });
-  };
-
-  const checkAnswer = (value) => {
-    if (value) setCorrect((prev) => Number(prev) + 1);
-    nextQuestion();
-  };
-
   const openModal = () => {
     setIsModalOpen(true);
   };
@@ -83,9 +66,24 @@ const AppProvider = ({ children }) => {
     setIsModalOpen(false);
   };
 
+  const nextQuestion = () => {
+    setIndex((prev) => {
+      if (Number(index) === Number(numberQuestions) - 1) {
+        openModal();
+        return prev;
+      }
+
+      return Number(prev) + 1;
+    });
+  };
+
+  const checkAnswer = (value) => {
+    if (value) setCorrect((prev) => Number(prev) + 1);
+    nextQuestion();
+  };
+
   const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
+    const { name, value } = e.target;
 
     setQuiz({
       ...quiz,
@@ -95,6 +93,11 @@ const AppProvider = ({ children }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const { amount, catergory, difficulty } = quiz;
+    const url = `${API_ENDPOINT}amount=${amount}&category=${table[catergory]}&difficulty=${difficulty}&type=multiple`;
+
+    fetchQuestions(url);
   };
 
   return (
