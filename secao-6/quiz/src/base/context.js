@@ -23,7 +23,7 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [numberQuestions, setNumberQuestions] = useState(0);
-  const [index, setIndext] = useState(0);
+  const [index, setIndex] = useState(0);
   const [correct, setCorrect] = useState(0);
   const [error, setError] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -52,6 +52,17 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  const nextQuestion = () => {
+    setIndex((prev) => {
+      if (Number(index) === Number(numberQuestions) - 1) {
+        // openModal();
+        return 0;
+      } else {
+        return Number(prev) + 1;
+      }
+    });
+  };
+
   useEffect(() => {
     fetchQuestions(tempUrl);
   }, []);
@@ -67,6 +78,7 @@ const AppProvider = ({ children }) => {
         error,
         isModalOpen,
         numberQuestions,
+        nextQuestion,
       }}
     >
       {children}
