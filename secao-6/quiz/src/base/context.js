@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { useContext, createContext, useState, useEffect } from 'react';
+import { useContext, createContext, useState } from 'react';
 import { node } from 'prop-types';
 import axios from 'axios';
 
@@ -11,8 +11,8 @@ import axios from 'axios';
 // }
 
 // const API_ENDPOINT = 'https://opentdb.com/api.php?'
-const tempUrl =
-  'https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple';
+// const tempUrl =
+// 'https://opentdb.com/api.php?amount=10&category=20&difficulty=easy&type=multiple';
 
 // const url = ''
 
@@ -27,6 +27,11 @@ const AppProvider = ({ children }) => {
   const [correct, setCorrect] = useState(0);
   const [error, setError] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [quiz, setQuiz] = useState({
+    amount: 10,
+    catergory: 'sports',
+    difficulty: 'easy',
+  });
 
   const fetchQuestions = async (url) => {
     setLoading(true);
@@ -78,9 +83,13 @@ const AppProvider = ({ children }) => {
     setIsModalOpen(false);
   };
 
-  useEffect(() => {
-    fetchQuestions(tempUrl);
-  }, []);
+  const handleChange = (e) => {
+    console.log(e);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <AppContext.Provider
@@ -96,6 +105,9 @@ const AppProvider = ({ children }) => {
         nextQuestion,
         checkAnswer,
         closeModal,
+        quiz,
+        handleChange,
+        handleSubmit,
       }}
     >
       {children}
