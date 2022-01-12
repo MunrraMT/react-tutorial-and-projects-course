@@ -22,6 +22,7 @@ const AppProvider = ({ children }) => {
   const [waiting, setWaiting] = useState(true);
   const [loading, setLoading] = useState(false);
   const [questions, setQuestions] = useState([]);
+  const [numberQuestions, setNumberQuestions] = useState(0);
   const [index, setIndext] = useState(0);
   const [correct, setCorrect] = useState(0);
   const [error, setError] = useState(false);
@@ -38,6 +39,7 @@ const AppProvider = ({ children }) => {
 
       if (data.length > 0) {
         setQuestions(data);
+        setNumberQuestions(data.length);
         setLoading(false);
         setWaiting(false);
         setError(false);
@@ -64,6 +66,7 @@ const AppProvider = ({ children }) => {
         correct,
         error,
         isModalOpen,
+        numberQuestions,
       }}
     >
       {children}
