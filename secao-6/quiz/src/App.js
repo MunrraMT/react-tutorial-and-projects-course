@@ -14,6 +14,7 @@ const App = () => {
     correct,
     numberQuestions,
     nextQuestion,
+    checkAnswer,
   } = useGlobalContext();
 
   if (waiting) return <SetupForm />;
@@ -36,7 +37,12 @@ const App = () => {
           {/* <h2 dangerouslySetInnerHTML={{ __html: question }} /> */}
           <section className="btn-container">
             {answers.sort().map((answer) => (
-              <button key={answer} type="button" className="answer-btn">
+              <button
+                key={answer}
+                type="button"
+                className="answer-btn"
+                onClick={() => checkAnswer(correct_answer === answer)}
+              >
                 {answer}
               </button>
             ))}
