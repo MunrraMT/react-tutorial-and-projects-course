@@ -1,12 +1,12 @@
-// import { Dashboard, Login, PrivateRoute, AuthWrapper, Error } from './pages';
 // import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
+import { Dashboard, Error, Login } from './base/pages';
 
 const App = () => (
   <div>
-    teste
-    {/* <Dashboard />
+    <Dashboard />
     <Login />
-    <Error /> */}
+    <Error />
   </div>
 );
 
