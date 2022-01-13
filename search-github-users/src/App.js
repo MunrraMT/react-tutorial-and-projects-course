@@ -1,13 +1,15 @@
-// import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import { Dashboard, Error, Login } from './base/pages';
 
 const App = () => (
-  <div>
-    <Dashboard />
-    <Login />
-    <Error />
-  </div>
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="*" element={<Error />} />
+    </Routes>
+  </BrowserRouter>
 );
 
 export default App;
