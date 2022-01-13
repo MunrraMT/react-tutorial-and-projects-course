@@ -1,7 +1,9 @@
+/* eslint-disable camelcase */
 import styled from 'styled-components';
+import { GoRepo, GoGist } from 'react-icons/go';
+import { FiUsers, FiUserPlus } from 'react-icons/fi';
+
 import { useGithubContext } from '../context/context';
-// import { GoRepo, GoGist } from 'react-icons/go';
-// import { FiUsers, FiUserPlus } from 'react-icons/fi';
 
 const Wrapper = styled.section`
   display: grid;
@@ -56,11 +58,57 @@ const Wrapper = styled.section`
 `;
 
 const UserInfo = () => {
-  const data = useGithubContext();
+  const {
+    githubUser: { public_repos, followers, following, public_gists },
+  } = useGithubContext();
 
-  console.log(data);
+  const items = [
+    {
+      id: 'item_0',
+      icon: <GoRepo className="icon" />,
+      label: 'repos',
+      value: public_repos,
+      color: 'pink',
+    },
+    {
+      id: 'item_1',
+      icon: <FiUsers className="icon" />,
+      label: 'followers',
+      value: followers,
+      color: 'green',
+    },
+    {
+      id: 'item_2',
+      icon: <FiUserPlus className="icon" />,
+      label: 'following',
+      value: following,
+      color: 'purple',
+    },
+    {
+      id: 'item_3',
+      icon: <GoGist className="icon" />,
+      label: 'gists',
+      value: public_gists,
+      color: 'yellow',
+    },
+  ];
 
-  return <Wrapper>user info component</Wrapper>;
+  return (
+    <section className="section">
+      <Wrapper className="sectionn-center">
+        {items.map(({ id, icon, label, value, color }) => (
+          <article key={id} className="item">
+            <span className={color}>{icon}</span>
+            <section>
+              <h3>{value}</h3>
+              <p>{label}</p>
+            </section>
+          </article>
+        ))}
+      </Wrapper>
+      ;
+    </section>
+  );
 };
 
 export default UserInfo;
