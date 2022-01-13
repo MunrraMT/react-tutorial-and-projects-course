@@ -58,7 +58,9 @@ const Wrapper = styled.section`
 const UserInfo = () => {
   const data = useGithubContext();
 
-  return <Wrapper>user info component : {data}</Wrapper>;
+  console.log(data);
+
+  return <Wrapper>user info component</Wrapper>;
 };
 
 export default UserInfo;
