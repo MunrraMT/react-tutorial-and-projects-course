@@ -1,5 +1,6 @@
-// import { GithubContext } from '../context/context';
 import styled from 'styled-components';
+
+import { useGithubContext } from '../context/context';
 
 const Wrapper = styled.article`
   background: var(--clr-white);
@@ -40,8 +41,8 @@ const Wrapper = styled.article`
     align-items: center;
     column-gap: 1rem;
     img {
-      height: 100%;
-      width: 45px;
+      height: 3.25rem;
+      width: 3.25rem;
       border-radius: 50%;
       object-fit: cover;
     }
@@ -54,6 +55,26 @@ const Wrapper = styled.article`
   }
 `;
 
-const Followers = () => <Wrapper>followers component</Wrapper>;
+const Followers = () => {
+  const { githubFollowers } = useGithubContext();
+
+  return (
+    <Wrapper>
+      <section className="followers">
+        {githubFollowers.map(
+          ({ id, avatar_url: avatarUrl, html_url: htmlUrl, login }) => (
+            <article key={id}>
+              <img src={avatarUrl} alt={login} />
+              <section>
+                <h4>{login}</h4>
+                <a href={htmlUrl}>{htmlUrl}</a>
+              </section>
+            </article>
+          ),
+        )}
+      </section>
+    </Wrapper>
+  );
+};
 
 export default Followers;
