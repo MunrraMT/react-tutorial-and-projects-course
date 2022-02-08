@@ -1,12 +1,18 @@
 import styled from 'styled-components';
+
 import { useGithubContext } from '../context/context';
+import { ExampleChart } from './Charts/index';
 
 const Repos = () => {
   const { githubRepos } = useGithubContext();
 
   console.log(githubRepos);
 
-  return <Wrapper>repos component</Wrapper>;
+  return (
+    <Wrapper>
+      <ExampleChart />
+    </Wrapper>
+  );
 };
 
 const Wrapper = styled.div`
