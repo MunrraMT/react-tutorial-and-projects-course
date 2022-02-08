@@ -181,3 +181,7 @@ p {
 main {
   padding-bottom: 2rem;
 }
+
+.no_width_div div {
+  width: fit-content !important;
+}

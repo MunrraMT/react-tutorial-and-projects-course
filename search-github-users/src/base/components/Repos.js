@@ -9,9 +9,11 @@ const Repos = () => {
   console.log(githubRepos);
 
   return (
-    <Wrapper>
-      <ExampleChart />
-    </Wrapper>
+    <section className="section">
+      <Wrapper className="section-center no_width_div">
+        <ExampleChart />
+      </Wrapper>
+    </section>
   );
 };
 
@@ -27,9 +29,10 @@ const Wrapper = styled.div`
     grid-template-columns: 2fr 3fr;
   }
 
-  div {
+  div:not(.recharts-tooltip-wrapper) {
     width: 100% !important;
   }
+
   .fusioncharts-container {
     width: 100% !important;
   }
