@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 import { useGithubContext } from '../context/context';
-import { ExampleChart } from './Charts/index';
+import Pie3D from './Charts/Pie3D';
 
 const Repos = () => {
   const { githubRepos } = useGithubContext();
@@ -10,8 +10,8 @@ const Repos = () => {
 
   return (
     <section className="section">
-      <Wrapper className="section-center no_width_div">
-        <ExampleChart />
+      <Wrapper className="section-center">
+        <Pie3D />
       </Wrapper>
     </section>
   );
