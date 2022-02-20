@@ -1,8 +1,10 @@
 import styled from 'styled-components';
-import Pie3D from './Charts/Pie3D';
 
 import { useGithubContext } from '../context/context';
+import { Doughnut2D, Pie3D } from './Charts';
+
 import languagesMostUsed from '../../utils/languagesMostUsed';
+import starsPerLanguages from '../../utils/starsPerLanguages';
 
 const Repos = () => {
   const { githubRepos } = useGithubContext();
@@ -11,6 +13,7 @@ const Repos = () => {
     <section className="section">
       <Wrapper className="section-center">
         <Pie3D data={languagesMostUsed(githubRepos)} />
+        <Doughnut2D data={starsPerLanguages(githubRepos)} />
       </Wrapper>
     </section>
   );

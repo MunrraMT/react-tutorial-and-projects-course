@@ -1,4 +1,3 @@
-/* eslint-disable react/style-prop-object */
 import {
   Chart as ChartJS,
   ArcElement,
@@ -51,18 +50,14 @@ const Pie3D = ({ data }) => {
         color: '#000',
         text: 'Most used languages',
         font: { family: 'verdana', size: 18 },
-        padding: { bottom: 25 },
+        padding: { bottom: 10 },
       },
-      subTitle: {
+      subtitle: {
         display: true,
         color: '#000',
-        text: 'Most used languages',
-        font: { family: 'verdana', size: 18 },
+        text: `Total de Stars: ${data.length}`,
+        font: { family: 'verdana', size: 12 },
         padding: { bottom: 25 },
-      },
-      centerText: {
-        display: true,
-        text: 'test',
       },
       legend: {
         position: 'bottom',
