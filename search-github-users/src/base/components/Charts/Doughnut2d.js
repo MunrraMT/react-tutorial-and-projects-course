@@ -6,13 +6,13 @@ import {
   Title,
   SubTitle,
 } from 'chart.js';
-import { number, string, arrayOf, shape } from 'prop-types';
 import { Doughnut } from 'react-chartjs-2';
+import { number, string, arrayOf, shape } from 'prop-types';
 
 ChartJS.register(ArcElement, Tooltip, Legend, Title, SubTitle);
 
 const Doughnut2d = ({ data }) => {
-  const dataFormatter = data.languageCount.map((item) => ({
+  const dataFormatter = data.languages.map((item) => ({
     label: item.language,
     value: item.stars,
     borderColor: {
@@ -87,7 +87,7 @@ const Doughnut2d = ({ data }) => {
 
 Doughnut2d.propTypes = {
   data: shape({
-    languageCount: arrayOf(shape({ language: string, stars: number })),
+    languages: arrayOf(shape({ language: string, stars: number })),
     totalStars: number,
   }).isRequired,
 };

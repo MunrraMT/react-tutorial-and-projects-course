@@ -7,7 +7,7 @@ const starsPerLanguages = (list) => {
 
   const languageUniqueList = [...new Set(languageList)];
 
-  const languageCount = languageUniqueList.map((itemLanguage) => ({
+  const languages = languageUniqueList.map((itemLanguage) => ({
     language: itemLanguage,
     stars: languageAndStarsList.reduce(
       (acc, itemReduce) =>
@@ -21,7 +21,7 @@ const starsPerLanguages = (list) => {
     0,
   );
 
-  return { languageCount, totalStars };
+  return { languages, totalStars };
 };
 
 export default starsPerLanguages;
