@@ -1,62 +1,98 @@
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
+/* eslint-disable react/style-prop-object */
+import {
+  Chart as ChartJS,
+  ArcElement,
+  Tooltip,
+  Legend,
+  Title,
+  SubTitle,
+} from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { number, string, arrayOf, shape } from 'prop-types';
 import { Pie } from 'react-chartjs-2';
 
-ChartJS.register(ArcElement, Tooltip, Legend);
+ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels, Title, SubTitle);
 
-const data = [
-  {
-    label: 'HTML',
-    value: 60,
-    borderColor: '#ff5e13',
-    backgroundColor: 'RGB(255, 94, 19,0.4)',
-  },
-  {
-    label: 'CSS',
-    value: 73,
-    borderColor: '#0e76a8',
-    backgroundColor: 'RGB(14, 118, 168,0.4)',
-  },
-  {
-    label: 'SCSS',
-    value: 45,
-    borderColor: '#cc6699',
-    backgroundColor: 'RGB(204, 102, 153,0.4)',
-  },
-  {
-    label: 'Javascript',
-    value: 80,
-    borderColor: '#f0db4f',
-    backgroundColor: 'RGB(240, 219, 79,0.4)',
-  },
-  {
-    label: 'ReactJS',
-    value: 60,
-    borderColor: '#61d8fb',
-    backgroundColor: 'RGB(97, 216, 251,0.4)',
-  },
-];
+const Pie3D = ({ data }) => {
+  const dataFormatter = data.map((item) => ({
+    label: item.language,
+    value: item.count,
+    borderColor: {
+      HTML: '#ff5e13',
+      CSS: '#264de4',
+      JavaScript: '#f0db4f',
+      TypeScript: '#007acc',
+    }[item.language],
+    backgroundColor: {
+      HTML: '#ffbea0',
+      CSS: '#a8b7f4',
+      JavaScript: '#f9f0b8',
+      TypeScript: '#99c9ea',
+    }[item.language],
+  }));
 
-const chartData = {
-  labels: data.map((item) => item.label),
-  datasets: [
-    {
-      data: data.map((item) => item.value),
-      backgroundColor: data.map((item) => item.backgroundColor),
-      borderColor: data.map((item) => item.borderColor),
+  const chartData = {
+    labels: dataFormatter.map((item) => item.label),
+    datasets: [
+      {
+        data: dataFormatter.map((item) => item.value),
+        backgroundColor: dataFormatter.map((item) => item.backgroundColor),
+        borderColor: dataFormatter.map((item) => item.borderColor),
+        radius: '90%',
+      },
+    ],
+  };
+
+  const options = {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        color: '#000',
+        text: 'Most used languages',
+        font: { family: 'verdana', size: 18 },
+        padding: { bottom: 25 },
+      },
+      subTitle: {
+        display: true,
+        color: '#000',
+        text: 'Most used languages',
+        font: { family: 'verdana', size: 18 },
+        padding: { bottom: 25 },
+      },
+      centerText: {
+        display: true,
+        text: 'test',
+      },
+      legend: {
+        position: 'bottom',
+        align: 'center',
+        labels: {
+          padding: 25,
+          font: { size: 15, family: 'verdana' },
+          color: '#000',
+        },
+      },
+      datalabels: {
+        anchor: 'end',
+        backgroundColor: '#fff',
+        color: '#000',
+        borderColor(context) {
+          return context.dataset.borderColor;
+        },
+        borderRadius: 25,
+        borderWidth: 2,
+        font: { family: 'verdana', size: 18 },
+        padding: 6,
+      },
     },
-  ],
+  };
+
+  return <Pie data={chartData} options={options} />;
 };
 
-const Pie3D = () => (
-  <Pie
-    data={chartData}
-    options={{
-      responsive: true,
-      plugins: {
-        legend: { position: 'bottom', labels: { padding: 25 } },
-      },
-    }}
-  />
-);
+Pie3D.propTypes = {
+  data: arrayOf(shape({ language: string, count: number })).isRequired,
+};
 
 export default Pie3D;

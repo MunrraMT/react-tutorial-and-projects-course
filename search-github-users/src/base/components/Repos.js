@@ -1,17 +1,16 @@
 import styled from 'styled-components';
+import Pie3D from './Charts/Pie3D';
 
 import { useGithubContext } from '../context/context';
-import Pie3D from './Charts/Pie3D';
+import languagesMostUsed from '../../utils/languagesMostUsed';
 
 const Repos = () => {
   const { githubRepos } = useGithubContext();
 
-  console.log(githubRepos);
-
   return (
     <section className="section">
       <Wrapper className="section-center">
-        <Pie3D />
+        <Pie3D data={languagesMostUsed(githubRepos)} />
       </Wrapper>
     </section>
   );
