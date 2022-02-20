@@ -9,19 +9,17 @@ const starsPerLanguages = (list) => {
 
   const languageCount = languageUniqueList.map((itemLanguage) => ({
     language: itemLanguage,
-    stars: languageAndStarsList.reduce((acc, itemReduce) => {
-      const total =
-        itemLanguage === itemReduce.language ? acc + itemReduce.stars : acc + 0;
-
-      return total;
-    }, 0),
+    stars: languageAndStarsList.reduce(
+      (acc, itemReduce) =>
+        itemLanguage === itemReduce.language ? acc + itemReduce.stars : acc + 0,
+      0,
+    ),
   }));
 
-  const totalStars = languageAndStarsList.reduce((acc, item) => {
-    const total = Number(acc) + Number(item.stars);
-
-    return total;
-  }, 0);
+  const totalStars = languageAndStarsList.reduce(
+    (acc, item) => Number(acc) + Number(item.stars),
+    0,
+  );
 
   return { languageCount, totalStars };
 };

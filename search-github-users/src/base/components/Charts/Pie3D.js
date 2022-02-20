@@ -55,7 +55,7 @@ const Pie3D = ({ data }) => {
       subtitle: {
         display: true,
         color: '#000',
-        text: `Total de Stars: ${data.length}`,
+        text: `Total of Languages: ${data.length}`,
         font: { family: 'verdana', size: 12 },
         padding: { bottom: 25 },
       },

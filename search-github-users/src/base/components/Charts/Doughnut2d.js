@@ -54,7 +54,7 @@ const Doughnut2d = ({ data }) => {
       subtitle: {
         display: true,
         color: '#000',
-        text: `Total de Stars: ${data.totalStars}`,
+        text: `Total of Stars: ${data.totalStars}`,
         font: { family: 'verdana', size: 12 },
         padding: { bottom: 25 },
       },
