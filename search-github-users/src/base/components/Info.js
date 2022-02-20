@@ -95,7 +95,7 @@ const UserInfo = () => {
 
   return (
     <section className="section">
-      <Wrapper className="sectionn-center">
+      <Wrapper className="section-center">
         {items.map(({ id, icon, label, value, color }) => (
           <article key={id} className="item">
             <span className={color}>{icon}</span>

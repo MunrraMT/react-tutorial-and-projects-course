@@ -27,6 +27,7 @@ const Wrapper = styled.div`
   display: grid;
   justify-items: center;
   gap: 2rem;
+
   @media (min-width: 800px) {
     grid-template-columns: 1fr 1fr;
   }
@@ -35,13 +36,17 @@ const Wrapper = styled.div`
     grid-template-columns: 2fr 3fr;
   }
 
-  div:not(.recharts-tooltip-wrapper) {
+  div {
     width: 100% !important;
   }
 
-  .fusioncharts-container {
-    width: 100% !important;
+  canvas {
+    background-color: #fff;
+    padding: 1rem;
+    max-width: 35rem;
+    max-height: 35rem;
   }
+
   svg {
     width: 100% !important;
     border-radius: var(--radius) !important;
