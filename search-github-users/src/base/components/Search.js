@@ -10,8 +10,12 @@ const Search = () => {
 
   const inputRef = useRef(null);
 
-  const { numberLastRequest, numberLimitRequest, requestError } =
-    useGithubContext();
+  const {
+    numberLastRequest,
+    numberLimitRequest,
+    requestError,
+    searchGithubUser,
+  } = useGithubContext();
 
   useEffect(() => {
     inputRef.current.focus();
@@ -20,9 +24,9 @@ const Search = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // if(user){}
-
-    setUser('');
+    if (user) {
+      searchGithubUser(user);
+    }
 
     console.log(user);
   };

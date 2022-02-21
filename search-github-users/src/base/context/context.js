@@ -45,6 +45,25 @@ const GithubProvider = ({ children }) => {
 
   useEffect(checkRequest, []);
 
+  const searchGithubUser = (user) => {
+    const requestUser = axios.get(`${rootUrl}/users/${user}`);
+    const requestRepos = axios.get(`${rootUrl}/users/${user}/repos`);
+    const requestFollowers = axios.get(`${rootUrl}/users/${user}/followers`);
+
+    axios
+      .all([requestUser, requestRepos, requestFollowers])
+      .then(
+        axios.spread((...responses) => {
+          setGithubUser(responses[0].data);
+          setGithubRepos(responses[1].data);
+          setGithubFollowers(responses[2].data);
+
+          toggleError(false, '');
+        }),
+      )
+      .catch(() => toggleError(true, 'there is no user with that username!'));
+  };
+
   const contextValue = useMemo(
     () => ({
       githubUser,
@@ -53,6 +72,7 @@ const GithubProvider = ({ children }) => {
       numberLastRequest,
       numberLimitRequest,
       requestError,
+      searchGithubUser,
     }),
     [
       githubUser,
