@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { node } from 'prop-types';
 import axios from 'axios';
@@ -33,7 +32,7 @@ const GithubProvider = ({ children }) => {
         setNumberLimitRequest(data.rate.limit);
         setNumberLastRequest(data.rate.remaining);
       })
-      .catch((e) =>
+      .catch(() =>
         setRequestError(
           toggleError(
             true,
@@ -46,6 +45,8 @@ const GithubProvider = ({ children }) => {
   useEffect(checkRequest, []);
 
   const searchGithubUser = (user) => {
+    setLoading(true);
+
     const requestUser = axios.get(`${rootUrl}/users/${user}`);
     const requestRepos = axios.get(`${rootUrl}/users/${user}/repos`);
     const requestFollowers = axios.get(`${rootUrl}/users/${user}/followers`);
@@ -59,9 +60,13 @@ const GithubProvider = ({ children }) => {
           setGithubFollowers(responses[2].data);
 
           toggleError(false, '');
+          setLoading(false);
         }),
       )
-      .catch(() => toggleError(true, 'there is no user with that username!'));
+      .catch(() => {
+        toggleError(true, 'there is no user with that username!');
+        setLoading(false);
+      });
   };
 
   const contextValue = useMemo(
@@ -73,6 +78,7 @@ const GithubProvider = ({ children }) => {
       numberLimitRequest,
       requestError,
       searchGithubUser,
+      loading,
     }),
     [
       githubUser,
@@ -81,6 +87,7 @@ const GithubProvider = ({ children }) => {
       numberLastRequest,
       numberLimitRequest,
       requestError,
+      loading,
     ],
   );
 
