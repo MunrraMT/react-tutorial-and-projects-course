@@ -1,18 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
+
 import styled from 'styled-components';
 import { MdSearch } from 'react-icons/md';
+
 import { useGithubContext } from '../context/context';
 
 const Search = () => {
   const [user, setUser] = useState('');
+
   const inputRef = useRef(null);
-  const { githubUser } = useGithubContext();
+
+  const { numberLastRequest, numberLimitRequest } = useGithubContext();
 
   useEffect(() => {
     inputRef.current.focus();
   }, []);
-
-  console.log(githubUser);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -41,10 +43,10 @@ const Search = () => {
               onChange={handleChange}
               ref={inputRef}
             />
-            <button type="submit">search</button>
+            {numberLastRequest > 0 && <button type="submit">search</button>}
           </section>
         </form>
-        <h3>requests: 60 / 60</h3>
+        <h3>{`requests: ${numberLastRequest} / ${numberLimitRequest}`}</h3>
       </Wrapper>
     </section>
   );

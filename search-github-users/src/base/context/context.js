@@ -1,13 +1,13 @@
 /* eslint-disable no-unused-vars */
-import { createContext, useContext, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { node } from 'prop-types';
-// import axios from 'axios';
+import axios from 'axios';
 
 import mockUser from './mockData.js/mockUser';
 import mockRepos from './mockData.js/mockRepos';
 import mockFollowers from './mockData.js/mockFollowers';
 
-// const rootUrl = 'https://api.github.com';
+const rootUrl = 'https://api.github.com';
 
 const GithubContext = createContext();
 
@@ -16,13 +16,37 @@ const GithubProvider = ({ children }) => {
   const [githubRepos, setGithubRepos] = useState(mockRepos);
   const [githubFollowers, setGithubFollowers] = useState(mockFollowers);
 
+  const [loading, setLoading] = useState(false);
+
+  const [numberLastRequest, setNumberLastRequest] = useState(60);
+  const [numberLimitRequest, setNumberLimitRequest] = useState(60);
+
+  const checkRequest = () => {
+    axios(`${rootUrl}/rate_limit`)
+      .then(({ data }) => {
+        setNumberLimitRequest(data.rate.limit);
+        setNumberLastRequest(data.rate.remaining);
+      })
+      .catch((error) => console.log(error));
+  };
+
+  useEffect(checkRequest, []);
+
   const contextValue = useMemo(
     () => ({
       githubUser,
       githubRepos,
       githubFollowers,
+      numberLastRequest,
+      numberLimitRequest,
     }),
-    [githubUser, githubRepos, githubFollowers],
+    [
+      githubUser,
+      githubRepos,
+      githubFollowers,
+      numberLastRequest,
+      numberLimitRequest,
+    ],
   );
 
   return (
