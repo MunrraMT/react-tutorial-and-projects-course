@@ -10,7 +10,8 @@ const Search = () => {
 
   const inputRef = useRef(null);
 
-  const { numberLastRequest, numberLimitRequest } = useGithubContext();
+  const { numberLastRequest, numberLimitRequest, requestError } =
+    useGithubContext();
 
   useEffect(() => {
     inputRef.current.focus();
@@ -33,6 +34,11 @@ const Search = () => {
   return (
     <section className="section">
       <Wrapper className="section-center">
+        {requestError.show && (
+          <ErrorWrapper>
+            <p>{requestError.message}</p>
+          </ErrorWrapper>
+        )}
         <form onSubmit={handleSubmit}>
           <section className="form-control">
             <MdSearch />
@@ -122,17 +128,17 @@ const Wrapper = styled.div`
   }
 `;
 
-// const ErrorWrapper = styled.article`
-//   position: absolute;
-//   width: 90vw;
-//   top: 0;
-//   left: 0;
-//   transform: translateY(-100%);
-//   text-transform: capitalize;
-//   p {
-//     color: red;
-//     letter-spacing: var(--spacing);
-//   }
-// `;
+const ErrorWrapper = styled.article`
+  position: absolute;
+  width: 90vw;
+  top: 0;
+  left: 0;
+  transform: translateY(-100%);
+  text-transform: capitalize;
+  p {
+    color: red;
+    letter-spacing: var(--spacing);
+  }
+`;
 
 export default Search;
