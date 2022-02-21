@@ -24,11 +24,7 @@ const Search = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (user) {
-      searchGithubUser(user);
-    }
-
-    console.log(user);
+    if (user) searchGithubUser(user);
   };
 
   const handleChange = (e) => {
