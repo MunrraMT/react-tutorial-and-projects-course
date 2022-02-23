@@ -27,19 +27,25 @@ const GithubProvider = ({ children }) => {
   const toggleError = (show, message) => setRequestError({ show, message });
 
   const checkRequest = () => {
+    setLoading(true);
+
     axios(`${rootUrl}/rate_limit`)
       .then(({ data }) => {
         setNumberLimitRequest(data.rate.limit);
         setNumberLastRequest(data.rate.remaining);
+
+        setLoading(false);
       })
-      .catch(() =>
+      .catch(() => {
         setRequestError(
           toggleError(
             true,
             'sorry, you have exceeded your houurly rate limit!',
           ),
-        ),
-      );
+        );
+
+        setLoading(false);
+      });
   };
 
   useEffect(checkRequest, []);
