@@ -1,5 +1,6 @@
-// import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth0 } from '@auth0/auth0-react';
 import styled from 'styled-components';
+
 import loginImg from '../images/login-img.svg';
 
 const Wrapper = styled.section`
@@ -19,16 +20,20 @@ const Wrapper = styled.section`
   }
 `;
 
-const Login = () => (
-  <Wrapper>
-    <section className="container">
-      <img src={loginImg} alt="github user" />
-      <h1>github user</h1>
-      <button type="button" className="btn">
-        login
-      </button>
-    </section>
-  </Wrapper>
-);
+const Login = () => {
+  const { loginWithPopup } = useAuth0();
+
+  return (
+    <Wrapper>
+      <section className="container">
+        <img src={loginImg} alt="github user" />
+        <h1>github user</h1>
+        <button type="button" className="btn" onClick={loginWithPopup}>
+          login
+        </button>
+      </section>
+    </Wrapper>
+  );
+};
 
 export default Login;
