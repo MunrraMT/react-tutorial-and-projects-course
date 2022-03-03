@@ -1,7 +1,6 @@
-const App = () => (
-  <section>
-    <h1>test</h1>
-  </section>
-);
+// import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+// import { Navbar, Sidebar, Footer } from './components';
+
+const App = () => <h4>comfy sloth starter</h4>;
 
 export default App;
