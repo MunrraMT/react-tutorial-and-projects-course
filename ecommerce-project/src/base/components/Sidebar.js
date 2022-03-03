@@ -8,7 +8,11 @@ import styled from 'styled-components';
 // import CartButtons from './CartButtons'
 // import { useUserContext } from '../context/user_context'
 
-const Sidebar = () => <SidebarContainer>sidebar</SidebarContainer>;
+const Sidebar = () => (
+  <SidebarContainer>
+    <h4>sidebar</h4>
+  </SidebarContainer>
+);
 
 const SidebarContainer = styled.div`
   text-align: center;

@@ -8,7 +8,11 @@ import styled from 'styled-components';
 // import { useProductsContext } from '../context/products_context'
 // import { useUserContext } from '../context/user_context'
 
-const Nav = () => <NavContainer>navbar</NavContainer>;
+const Nav = () => (
+  <NavContainer>
+    <h4>navbar</h4>
+  </NavContainer>
+);
 
 const NavContainer = styled.nav`
   height: 5rem;
