@@ -1,18 +1,43 @@
 import styled from 'styled-components';
-// import { Link } from 'react-router-dom'
-// import { FaTimes } from 'react-icons/fa'
+import { Link } from 'react-router-dom';
+import { FaTimes } from 'react-icons/fa';
 
-// import logo from '../assets/logo.svg'
+import logo from '../assets/logo.svg';
 // import { useProductsContext } from '../context/products_context'
-// import { links } from '../utils/constants'
-// import CartButtons from './CartButtons'
+import { links } from '../utils/constants';
+import CartButtons from './CartButtons';
 // import { useUserContext } from '../context/user_context'
 
-const Sidebar = () => (
-  <SidebarContainer>
-    <h4>sidebar</h4>
-  </SidebarContainer>
-);
+const Sidebar = () => {
+  const isOpen = true;
+
+  return (
+    <SidebarContainer>
+      <aside className={`sidebar ${isOpen ? 'show-sidebar' : ''}`}>
+        <section className="sidebar-header">
+          <img src={logo} alt="logo" className="logo" />
+          <button type="button" className="close-btn">
+            <FaTimes />
+          </button>
+        </section>
+
+        <ul className="links">
+          {links.map(({ id, text, url }) => (
+            <li key={id}>
+              <Link to={url}>{text}</Link>
+            </li>
+          ))}
+
+          <li>
+            <Link to="/check">checkout</Link>
+          </li>
+        </ul>
+
+        <CartButtons />
+      </aside>
+    </SidebarContainer>
+  );
+};
 
 const SidebarContainer = styled.div`
   text-align: center;
