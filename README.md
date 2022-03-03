@@ -10,7 +10,7 @@ All Project Intros are available for preview.
 
 ### Basic Projects:
 
-<table align="center">
+<table>
 
 <tr align="middle">
 
@@ -110,7 +110,7 @@ All Project Intros are available for preview.
 
 ### Advanced Projects (API and External Libraries):
 
-<table align="center">
+<table>
 
 <tr align="middle">
 
@@ -172,7 +172,7 @@ All Project Intros are available for preview.
 
 ### Big Projects:
 
-<table align="center">
+<table>
 
 <tr align="middle">
 
