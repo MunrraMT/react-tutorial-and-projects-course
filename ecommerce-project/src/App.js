@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
-import { Footer, Navbar, Sidebar } from './base/components';
 
+import { Footer, Navbar, Sidebar } from './base/components';
 import {
   AboutPage,
   CartPage,
@@ -15,6 +15,7 @@ const App = () => (
   <>
     <Navbar />
     <Sidebar />
+
     <Routes>
       <Route path="/" element={<HomePage />} />
       <Route path="/about" element={<AboutPage />} />
@@ -26,6 +27,7 @@ const App = () => (
 
       <Route path="*" element={<ErrorPage />} />
     </Routes>
+
     <Footer />
   </>
 );
