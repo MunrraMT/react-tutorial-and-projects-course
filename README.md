@@ -169,3 +169,19 @@ All Project Intros are available for preview.
 </tr>
 
 </table>
+
+### Big Projects:
+
+<table align="center">
+
+<tr align="middle">
+
+<td width="200">
+
+[Search Github Users](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/search-github-users)
+
+</td>
+
+</tr>
+
+</table>
