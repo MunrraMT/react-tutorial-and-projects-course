@@ -182,6 +182,12 @@ All Project Intros are available for preview.
 
 </td>
 
+<td width="200">
+
+[Search Github Users](https://github.com/MunrraMT/react-tutorial-and-projects-course/tree/main/ecommerce-project)
+
+</td>
+
 </tr>
 
 </table>
