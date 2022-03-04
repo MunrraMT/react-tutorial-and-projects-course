@@ -1,11 +1,10 @@
 /* eslint-disable no-unused-vars */
 import { createContext, useContext, useEffect, useReducer } from 'react';
 import { node } from 'prop-types';
-
-// import axios from 'axios'
+import axios from 'axios';
 
 import reducer from '../reducers/products_reducer';
-// import { products_url as url } from '../utils/constants'
+import { productsUrl } from '../utils/constants';
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
@@ -33,6 +32,16 @@ export const ProductsProvider = ({ children }) => {
   const closeSidebar = () => {
     dispatch({ type: SIDEBAR_CLOSE });
   };
+
+  const fetchProducts = async (url) => {
+    const response = await axios.get(url).then(({ data }) => {
+      console.log(data);
+    });
+  };
+
+  useEffect(() => {
+    fetchProducts(productsUrl);
+  }, []);
 
   useEffect(() => {
     console.log(state);
