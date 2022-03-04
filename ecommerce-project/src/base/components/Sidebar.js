@@ -6,17 +6,18 @@ import logo from '../assets/logo.svg';
 // import { useProductsContext } from '../context/products_context'
 import { links } from '../utils/constants';
 import CartButtons from './CartButtons';
+import { useProductsContext } from '../context/products_context';
 // import { useUserContext } from '../context/user_context'
 
 const Sidebar = () => {
-  const isOpen = true;
+  const { closeSidebar, isSidebarOpen } = useProductsContext();
 
   return (
     <SidebarContainer>
-      <aside className={`sidebar ${isOpen ? 'show-sidebar' : ''}`}>
+      <aside className={`sidebar ${isSidebarOpen ? 'show-sidebar' : ''}`}>
         <section className="sidebar-header">
           <img src={logo} alt="logo" className="logo" />
-          <button type="button" className="close-btn">
+          <button type="button" className="close-btn" onClick={closeSidebar}>
             <FaTimes />
           </button>
         </section>

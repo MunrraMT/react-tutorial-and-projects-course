@@ -5,34 +5,37 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/logo.svg';
 import { links } from '../utils/constants';
 import CartButtons from './CartButtons';
-// import { useProductsContext } from '../context/products_context';
-// import { useUserContext } from '../context/user_context';
+import { useProductsContext } from '../context/products_context';
 
-const Nav = () => (
-  <NavContainer>
-    <section className="nav-center">
-      <section className="nav-header">
-        <Link to="/">
-          <img src={logo} alt="logo" />
-        </Link>
+const Nav = () => {
+  const { openSidebar } = useProductsContext();
 
-        <button type="button" className="nav-toggle">
-          <FaBars />
-        </button>
+  return (
+    <NavContainer>
+      <section className="nav-center">
+        <section className="nav-header">
+          <Link to="/">
+            <img src={logo} alt="logo" />
+          </Link>
+
+          <button type="button" className="nav-toggle" onClick={openSidebar}>
+            <FaBars />
+          </button>
+        </section>
+
+        <ul className="nav-links">
+          {links.map(({ id, text, url }) => (
+            <li key={id}>
+              <Link to={url}>{text}</Link>
+            </li>
+          ))}
+        </ul>
+
+        <CartButtons />
       </section>
-
-      <ul className="nav-links">
-        {links.map(({ id, text, url }) => (
-          <li key={id}>
-            <Link to={url}>{text}</Link>
-          </li>
-        ))}
-      </ul>
-
-      <CartButtons />
-    </section>
-  </NavContainer>
-);
+    </NavContainer>
+  );
+};
 
 const NavContainer = styled.nav`
   height: 5rem;
