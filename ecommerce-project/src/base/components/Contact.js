@@ -10,13 +10,18 @@ const Contact = () => (
           dolores, animi quasi maxime iste deserunt cum ipsum dicta facere.
         </p>
 
-        <form className="contact-form">
+        <form
+          className="contact-form"
+          action="https://formspree.io/f/xwkybnae"
+          method="POST"
+        >
           <input
             type="email"
             className="form-input"
             placeholder="enter email"
+            name="_replyto"
           />
-          <button type="submit" className="submit-btn">
+          <button type="submit" className="submit-btn" value="Send">
             subscribe
           </button>
         </form>
