@@ -1,5 +1,12 @@
-// import { FeaturedProducts, Hero, Services, Contact } from '../components'
+import { Contact, FeaturedProducts, Hero, Services } from '../components';
 
-const HomePage = () => <h4>home page</h4>;
+const HomePage = () => (
+  <main>
+    <Hero />
+    <FeaturedProducts />
+    <Services />
+    <Contact />
+  </main>
+);
 
 export default HomePage;
