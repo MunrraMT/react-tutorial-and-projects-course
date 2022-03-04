@@ -2,12 +2,10 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FaTimes } from 'react-icons/fa';
 
+import { useProductsContext } from '../context/products_context';
 import logo from '../assets/logo.svg';
-// import { useProductsContext } from '../context/products_context'
 import { links } from '../utils/constants';
 import CartButtons from './CartButtons';
-import { useProductsContext } from '../context/products_context';
-// import { useUserContext } from '../context/user_context'
 
 const Sidebar = () => {
   const { closeSidebar, isSidebarOpen } = useProductsContext();
@@ -25,12 +23,16 @@ const Sidebar = () => {
         <ul className="links">
           {links.map(({ id, text, url }) => (
             <li key={id}>
-              <Link to={url}>{text}</Link>
+              <Link to={url} onClick={closeSidebar}>
+                {text}
+              </Link>
             </li>
           ))}
 
           <li>
-            <Link to="/check">checkout</Link>
+            <Link to="/checkout" onClick={closeSidebar}>
+              checkout
+            </Link>
           </li>
         </ul>
 

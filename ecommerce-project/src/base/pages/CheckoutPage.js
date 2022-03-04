@@ -1,10 +1,15 @@
 import styled from 'styled-components';
-// import { Link } from 'react-router-dom'
 
-// import { PageHero, StripeCheckout } from '../components'
-// import { useCartContext } from '../context/cart_context'
+import { PageHero } from '../components';
 
-const CheckoutPage = () => <Wrapper>checkout page</Wrapper>;
+const CheckoutPage = () => (
+  <main>
+    <PageHero title="checkout" url="/checkout" />
+    <Wrapper className="page">
+      <h1>checkout here</h1>
+    </Wrapper>
+  </main>
+);
 
 const Wrapper = styled.div``;
 

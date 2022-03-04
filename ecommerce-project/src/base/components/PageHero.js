@@ -1,7 +1,21 @@
 import styled from 'styled-components';
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { string } from 'prop-types';
 
-const PageHero = () => <Wrapper>page hero</Wrapper>;
+const PageHero = ({ title, url }) => (
+  <Wrapper>
+    <section className="section-center">
+      <h3>
+        <Link to={url}>home / </Link> {title}
+      </h3>
+    </section>
+  </Wrapper>
+);
+
+PageHero.propTypes = {
+  title: string.isRequired,
+  url: string.isRequired,
+};
 
 const Wrapper = styled.section`
   background: var(--clr-primary-10);
