@@ -11,8 +11,12 @@ const Hero = () => (
         design your <br /> comfort zone
       </h1>
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eum cum ipsum
-        magni labore, laboriosam perspiciatis accusamus! Fuga eum qui ipsum.
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. In accusamus
+        deleniti optio laborum dolorem eveniet. Soluta aut doloribus non? Maxime
+        eius, asperiores nostrum quidem velit officia dolorem dicta atque
+        fugiat, placeat voluptates voluptas est sed incidunt, fuga consequuntur
+        possimus neque eveniet ipsam enim. Libero voluptatibus alias saepe ipsum
+        accusamus cupiditate.
       </p>
       <Link to="/products" className="btn hero-btn">
         shop now
