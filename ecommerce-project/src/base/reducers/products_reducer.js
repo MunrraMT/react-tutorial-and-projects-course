@@ -15,7 +15,6 @@ import {
 const productsReducer = (state, action) => {
   const command = action.type;
   const newData = action.payload;
-  const priceFormatter = (price) => price / 100;
 
   const actions = {
     SIDEBAR_OPEN: { ...state, isSidebarOpen: true },
@@ -23,22 +22,10 @@ const productsReducer = (state, action) => {
     GET_PRODUCTS_BEGIN: { ...state, productsLoading: true },
     GET_PRODUCTS_SUCCESS: {
       ...state,
-      products:
-        newData &&
-        newData.map((item) => ({
-          ...item,
-          price: priceFormatter(item.price),
-        })),
+      products: newData,
       productsLoading: false,
       featureProducts:
-        newData &&
-        newData
-          .filter((item) => item.featured)
-          .slice(0, 3)
-          .map((item) => ({
-            ...item,
-            price: priceFormatter(item.price),
-          })),
+        newData && newData.filter((item) => item.featured).slice(0, 3),
     },
     GET_PRODUCTS_ERROR: {
       ...state,
