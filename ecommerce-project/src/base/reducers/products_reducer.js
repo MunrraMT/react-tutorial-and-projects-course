@@ -14,10 +14,23 @@ import {
 
 const productsReducer = (state, action) => {
   const command = action.type;
+  const newData = action.payload;
 
   const actions = {
     SIDEBAR_OPEN: { ...state, isSidebarOpen: true },
     SIDEBAR_CLOSE: { ...state, isSidebarOpen: false },
+    GET_PRODUCTS_BEGIN: { ...state, productsLoading: true },
+    GET_PRODUCTS_SUCCESS: {
+      ...state,
+      products: newData,
+      productsLoading: false,
+      featureProducts: newData && newData.filter((item) => item.featured),
+    },
+    GET_PRODUCTS_ERROR: {
+      ...state,
+      productsError: true,
+      productsLoading: false,
+    },
   };
 
   const isValidAction = () =>

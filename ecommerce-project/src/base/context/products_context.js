@@ -18,6 +18,10 @@ import {
 
 const initialState = {
   isSidebarOpen: false,
+  productsLoading: false,
+  productsError: false,
+  products: [],
+  featureProducts: [],
 };
 
 const ProductsContext = createContext();
@@ -34,9 +38,15 @@ export const ProductsProvider = ({ children }) => {
   };
 
   const fetchProducts = async (url) => {
-    const response = await axios.get(url).then(({ data }) => {
-      console.log(data);
-    });
+    dispatch({ type: GET_PRODUCTS_BEGIN });
+
+    try {
+      const response = await axios.get(url).then(({ data }) => {
+        dispatch({ type: GET_PRODUCTS_SUCCESS, payload: data });
+      });
+    } catch (error) {
+      dispatch({ type: GET_PRODUCTS_ERROR });
+    }
   };
 
   useEffect(() => {
