@@ -1,3 +1,7 @@
-const Loading = () => <h4>loading element</h4>;
+const Loading = () => (
+  <section className="section section-center">
+    <section className="loading" />
+  </section>
+);
 
 export default Loading;

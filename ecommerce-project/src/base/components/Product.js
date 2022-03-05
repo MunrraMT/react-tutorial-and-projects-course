@@ -1,10 +1,32 @@
+/* eslint-disable no-unused-vars */
 import styled from 'styled-components';
-// import { FaSearch } from 'react-icons/fa'
-// import { Link } from 'react-router-dom'
+import { string, arrayOf, number } from 'prop-types';
+import { FaSearch } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
-// import { formatPrice } from '../utils/helpers'
+import { formatPrice } from '../utils/helpers';
 
-const Product = () => <Wrapper>product</Wrapper>;
+const Product = ({ id, image, name, price }) => (
+  <Wrapper>
+    <div className="container">
+      <img src={image} alt={name} />
+      <Link to={`/products/${id}`} className="link">
+        <FaSearch />
+      </Link>
+    </div>
+    <footer>
+      <h5>{name}</h5>
+      <p>${price}</p>
+    </footer>
+  </Wrapper>
+);
+
+Product.propTypes = {
+  id: string.isRequired,
+  image: string.isRequired,
+  name: string.isRequired,
+  price: number.isRequired,
+};
 
 const Wrapper = styled.article`
   .container {
