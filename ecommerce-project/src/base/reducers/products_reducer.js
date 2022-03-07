@@ -19,11 +19,16 @@ const productsReducer = (state, action) => {
   const actions = {
     SIDEBAR_OPEN: { ...state, isSidebarOpen: true },
     SIDEBAR_CLOSE: { ...state, isSidebarOpen: false },
-    GET_PRODUCTS_BEGIN: { ...state, productsLoading: true },
+    GET_PRODUCTS_BEGIN: {
+      ...state,
+      productsLoading: true,
+      productsError: false,
+    },
     GET_PRODUCTS_SUCCESS: {
       ...state,
       products: newData,
       productsLoading: false,
+      productsError: false,
       featureProducts:
         newData && newData.filter((item) => item.featured).slice(0, 3),
     },
@@ -31,6 +36,22 @@ const productsReducer = (state, action) => {
       ...state,
       productsError: true,
       productsLoading: false,
+    },
+    GET_SINGLE_PRODUCT_BEGIN: {
+      ...state,
+      singleProductLoading: true,
+      singleProductError: false,
+    },
+    GET_SINGLE_PRODUCT_SUCCESS: {
+      ...state,
+      singleProductLoading: false,
+      singleProductError: false,
+      singleProduct: newData,
+    },
+    GET_SINGLE_PRODUCT_ERROR: {
+      ...state,
+      singleProductError: true,
+      singleProductLoading: false,
     },
   };
 

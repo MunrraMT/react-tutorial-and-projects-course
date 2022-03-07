@@ -16,7 +16,7 @@ const Product = ({ id, image, name, price }) => (
     </div>
     <footer>
       <h5>{name}</h5>
-      <p>{formatPrice(price / 100)}</p>
+      <p>{formatPrice(price)}</p>
     </footer>
   </Wrapper>
 );

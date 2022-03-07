@@ -2,7 +2,7 @@ import styled from 'styled-components';
 // import { Link } from 'react-router-dom'
 // import { useParams, useHistory } from 'react-router-dom'
 
-// import { useProductsContext } from '../context/products_context'
+import { useProductsContext } from '../context/products_context';
 // import { single_product_url as url } from '../utils/constants'
 // import { formatPrice } from '../utils/helpers'
 // import {
@@ -14,7 +14,13 @@ import styled from 'styled-components';
 //   PageHero,
 // } from '../components'
 
-const SingleProductPage = () => <Wrapper>single product page</Wrapper>;
+const SingleProductPage = () => {
+  const { fetchSingleProduct } = useProductsContext();
+
+  console.log(fetchSingleProduct);
+
+  return <Wrapper>teste</Wrapper>;
+};
 
 const Wrapper = styled.main`
   .product-center {
