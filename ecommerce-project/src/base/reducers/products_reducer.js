@@ -30,7 +30,9 @@ const productsReducer = (state, action) => {
       productsLoading: false,
       productsError: false,
       featureProducts:
-        newData && newData.filter((item) => item.featured).slice(0, 3),
+        newData &&
+        Array.isArray(newData) &&
+        newData.filter((item) => item.featured).slice(0, 3),
     },
     GET_PRODUCTS_ERROR: {
       ...state,

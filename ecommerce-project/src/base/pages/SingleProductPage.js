@@ -1,23 +1,43 @@
+/* eslint-disable no-unused-vars */
+import { useEffect } from 'react';
 import styled from 'styled-components';
-// import { Link } from 'react-router-dom'
-// import { useParams, useHistory } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom';
 
 import { useProductsContext } from '../context/products_context';
-// import { single_product_url as url } from '../utils/constants'
-// import { formatPrice } from '../utils/helpers'
-// import {
-//   Loading,
-//   Error,
-//   ProductImages,
-//   AddToCart,
-//   Stars,
-//   PageHero,
-// } from '../components'
+import { formatPrice } from '../utils/helpers';
+import {
+  Loading,
+  Error,
+  ProductImages,
+  AddToCart,
+  Stars,
+  PageHero,
+} from '../components';
 
 const SingleProductPage = () => {
-  const { fetchSingleProduct } = useProductsContext();
+  const {
+    fetchSingleProduct,
+    singleProductLoading,
+    singleProductError,
+    singleProduct,
+  } = useProductsContext();
 
-  console.log(fetchSingleProduct);
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    fetchSingleProduct(id);
+  }, [id]);
+
+  if (singleProductLoading) return <Loading />;
+
+  if (singleProductError) {
+    setTimeout(() => {
+      navigate(-1);
+    }, 3000);
+
+    return <Error />;
+  }
 
   return <Wrapper>teste</Wrapper>;
 };

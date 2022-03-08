@@ -4,7 +4,7 @@ import { node } from 'prop-types';
 import axios from 'axios';
 
 import reducer from '../reducers/products_reducer';
-import { productsUrl } from '../utils/constants';
+import { productsUrl, singleProductUrl } from '../utils/constants';
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
@@ -56,9 +56,11 @@ export const ProductsProvider = ({ children }) => {
     dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
 
     try {
-      const response = await axios.get(url).then(({ data }) => {
-        dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: data });
-      });
+      const response = await axios
+        .get(`${singleProductUrl}${url}`)
+        .then(({ data }) => {
+          dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: data });
+        });
     } catch (error) {
       dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
     }
