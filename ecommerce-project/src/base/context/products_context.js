@@ -40,11 +40,11 @@ export const ProductsProvider = ({ children }) => {
     dispatch({ type: SIDEBAR_CLOSE });
   };
 
-  const fetchProducts = async (url) => {
+  const fetchProducts = (url) => {
     dispatch({ type: GET_PRODUCTS_BEGIN });
 
     try {
-      const response = await axios.get(url).then(({ data }) => {
+      axios.get(url).then(({ data }) => {
         dispatch({ type: GET_PRODUCTS_SUCCESS, payload: data });
       });
     } catch (error) {
@@ -52,15 +52,13 @@ export const ProductsProvider = ({ children }) => {
     }
   };
 
-  const fetchSingleProduct = async (url) => {
+  const fetchSingleProduct = (url) => {
     dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
 
     try {
-      const response = await axios
-        .get(`${singleProductUrl}${url}`)
-        .then(({ data }) => {
-          dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: data });
-        });
+      axios.get(`${singleProductUrl}${url}`).then(({ data }) => {
+        dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: data });
+      });
     } catch (error) {
       dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
     }
