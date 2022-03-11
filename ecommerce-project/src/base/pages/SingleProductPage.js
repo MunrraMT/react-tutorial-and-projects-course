@@ -29,8 +29,6 @@ const SingleProductPage = () => {
     fetchSingleProduct(paramsID);
   }, [paramsID]);
 
-  if (singleProductLoading) return <Loading />;
-
   if (singleProductError) {
     setTimeout(() => {
       navigate(-1);
@@ -39,11 +37,16 @@ const SingleProductPage = () => {
     return <Error />;
   }
 
+  if (singleProductLoading || Object.keys(singleProduct).length === 0) {
+    return <Loading />;
+  }
+
   const {
     category,
     company,
     description,
     id: SKU,
+    images,
     name,
     price,
     reviews,
@@ -53,15 +56,15 @@ const SingleProductPage = () => {
 
   return (
     <Wrapper>
-      <PageHero title={name || 'Loading...'} url={`/product/${SKU}` || '/'} />
+      <PageHero title={name} url={`/product/${SKU}`} />
       <div className="section section-center page">
         <Link to="/products" className="btn">
           back to products
         </Link>
-        <div className="products-center">
-          <ProductImages />
+        <div className="product-center">
+          <ProductImages images={images} />
           <section className="content">
-            <h2>{name || 'Loading...'}</h2>
+            <h2>{name}</h2>
             <Stars />
             <h5 className="price">{formatPrice(price)}</h5>
             <p className="desc">{description}</p>

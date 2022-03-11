@@ -1,6 +1,55 @@
+/* eslint-disable no-unused-vars */
+import { arrayOf, number, shape, string } from 'prop-types';
+import { useState } from 'react';
 import styled from 'styled-components';
+import Loading from './Loading';
 
-const ProductImages = () => <Wrapper>product images</Wrapper>;
+const ProductImages = ({ images }) => {
+  const [mainImage, setMainImage] = useState(images[0]);
+
+  const onClickHandle = (index) => {
+    setMainImage(images[index]);
+  };
+
+  return (
+    <Wrapper>
+      <img
+        className="main"
+        src={mainImage.thumbnails.large.url}
+        alt="product"
+      />
+
+      <div className="gallery">
+        {images.map(({ id, thumbnails: { small } }, index) => (
+          <button
+            className={mainImage.id === id ? 'active' : ''}
+            key={id}
+            type="button"
+            onClick={() => onClickHandle(index)}
+          >
+            <img src={small.url} alt="product thumbnails" />
+          </button>
+        ))}
+      </div>
+    </Wrapper>
+  );
+};
+
+ProductImages.propTypes = {
+  images: arrayOf(
+    shape({
+      filename: string,
+      id: string,
+      url: string,
+      height: number,
+      width: number,
+      thumbnails: shape({
+        large: shape({ height: number, url: string, width: number }),
+        small: shape({ height: number, url: string, width: number }),
+      }),
+    }),
+  ).isRequired,
+};
 
 const Wrapper = styled.section`
   .main {
@@ -17,6 +66,10 @@ const Wrapper = styled.section`
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     column-gap: 1rem;
+    button {
+      border: none;
+      border-radius: 4px;
+    }
     img {
       height: 100px;
       cursor: pointer;
