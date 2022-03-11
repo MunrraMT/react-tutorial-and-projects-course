@@ -1,11 +1,48 @@
+/* eslint-disable no-unused-vars */
+import { useState } from 'react';
 import styled from 'styled-components';
-// import { Link } from 'react-router-dom'
-// import { FaCheck } from 'react-icons/fa'
+import { string, number, arrayOf } from 'prop-types';
+import { Link } from 'react-router-dom';
+import { FaCheck } from 'react-icons/fa';
 
-// import { useCartContext } from '../context/cart_context'
-// import AmountButtons from './AmountButtons'
+import { useCartContext } from '../context/cart_context';
+import AmountButtons from './AmountButtons';
 
-const AddToCart = () => <Wrapper>addToCart </Wrapper>;
+const AddToCart = ({ id, stock, colors }) => {
+  const [mainColor, setMainColor] = useState(colors[0]);
+
+  const handleClick = (color) => {
+    setMainColor(color);
+  };
+
+  return (
+    <Wrapper>
+      <div className="colors">
+        <span>colors: </span>
+        <div>
+          {colors.map((color, index) => (
+            <button
+              type="button"
+              className={mainColor === color ? 'color-btn active' : 'color-btn'}
+              key={color}
+              style={{ backgroundColor: color }}
+              onClick={() => handleClick(color)}
+            >
+              {mainColor === color ? <FaCheck /> : ''}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="btn-container" />
+    </Wrapper>
+  );
+};
+
+AddToCart.propTypes = {
+  id: string.isRequired,
+  stock: number.isRequired,
+  colors: arrayOf(string).isRequired,
+};
 
 const Wrapper = styled.section`
   margin-top: 2rem;

@@ -52,6 +52,7 @@ const SingleProductPage = () => {
     reviews,
     stars,
     stock,
+    colors,
   } = singleProduct;
 
   return (
@@ -81,7 +82,7 @@ const SingleProductPage = () => {
               {company}
             </p>
             <hr />
-            {stock > 0 && <AddToCart />}
+            {stock > 0 && <AddToCart id={SKU} stock={stock} colors={colors} />}
           </section>
         </div>
       </div>
