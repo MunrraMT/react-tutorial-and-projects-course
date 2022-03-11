@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { string, number, arrayOf } from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -10,9 +10,20 @@ import AmountButtons from './AmountButtons';
 
 const AddToCart = ({ id, stock, colors }) => {
   const [mainColor, setMainColor] = useState(colors[0]);
+  const [amount, setAmount] = useState(1);
 
   const handleClick = (color) => {
     setMainColor(color);
+  };
+
+  const increase = () => {
+    if (amount === stock) return;
+    setAmount((prev) => prev + 1);
+  };
+
+  const decrease = () => {
+    if (amount === 1) return;
+    setAmount((prev) => prev - 1);
   };
 
   return (
@@ -33,7 +44,16 @@ const AddToCart = ({ id, stock, colors }) => {
           ))}
         </div>
       </div>
-      <div className="btn-container" />
+      <div className="btn-container">
+        <AmountButtons
+          increase={increase}
+          decrease={decrease}
+          amount={amount}
+        />
+        <Link to="/cart" className="btn">
+          add to cart
+        </Link>
+      </div>
     </Wrapper>
   );
 };

@@ -1,7 +1,24 @@
 import styled from 'styled-components';
-// import { FaPlus, FaMinus } from 'react-icons/fa'
+import { FaPlus, FaMinus } from 'react-icons/fa';
+import { func, number } from 'prop-types';
 
-const AmountButtons = () => <Wrapper>amount buttons </Wrapper>;
+const AmountButtons = ({ increase, decrease, amount }) => (
+  <Wrapper className="amount-btns">
+    <button type="button" className="amount-btn" onClick={decrease}>
+      <FaMinus />
+    </button>
+    <h2 className="amount">{amount}</h2>
+    <button type="button" className="amount-btn" onClick={increase}>
+      <FaPlus />
+    </button>
+  </Wrapper>
+);
+
+AmountButtons.propTypes = {
+  increase: func.isRequired,
+  decrease: func.isRequired,
+  amount: number.isRequired,
+};
 
 const Wrapper = styled.div`
   display: grid;
