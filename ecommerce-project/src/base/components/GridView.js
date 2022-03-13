@@ -1,8 +1,28 @@
+import { arrayOf, number, shape, string } from 'prop-types';
 import styled from 'styled-components';
 
-// import Product from './Product'
+import Product from './Product';
 
-const GridView = () => <Wrapper>Grid View</Wrapper>;
+const GridView = ({ products }) => (
+  <Wrapper>
+    <div className="products-container">
+      {products.map(({ id, image, name, price }) => (
+        <Product key={id} id={id} image={image} name={name} price={price} />
+      ))}
+    </div>
+  </Wrapper>
+);
+
+GridView.propTypes = {
+  products: arrayOf(
+    shape({
+      id: string,
+      image: string,
+      name: string,
+      price: number,
+    }),
+  ).isRequired,
+};
 
 const Wrapper = styled.section`
   img {
