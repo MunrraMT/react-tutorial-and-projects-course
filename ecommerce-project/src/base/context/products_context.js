@@ -68,10 +68,6 @@ export const ProductsProvider = ({ children }) => {
     fetchProducts(productsUrl);
   }, []);
 
-  useEffect(() => {
-    console.log(state);
-  }, [state]);
-
   return (
     <ProductsContext.Provider
       value={{ ...state, openSidebar, closeSidebar, fetchSingleProduct }}

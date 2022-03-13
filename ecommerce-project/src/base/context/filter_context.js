@@ -17,6 +17,8 @@ import {
 const initialState = {
   filteredProducts: [],
   allProducts: [],
+  gridView: false,
+  filters: [],
 };
 
 const FilterContext = createContext();
@@ -29,6 +31,10 @@ export const FilterProvider = ({ children }) => {
   useEffect(() => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
   }, [products]);
+
+  useEffect(() => {
+    console.log(state);
+  }, [state]);
 
   return (
     <FilterContext.Provider value={state}>{children}</FilterContext.Provider>

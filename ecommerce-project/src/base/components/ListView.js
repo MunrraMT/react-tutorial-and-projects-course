@@ -1,9 +1,38 @@
 import styled from 'styled-components';
-// import { Link } from 'react-router-dom'
+import { arrayOf, number, shape, string } from 'prop-types';
+import { Link } from 'react-router-dom';
 
-// import { formatPrice } from '../utils/helpers'
+import { formatPrice } from '../utils/helpers';
 
-const ListView = () => <Wrapper>list view</Wrapper>;
+const ListView = ({ products }) => (
+  <Wrapper>
+    {products.map(({ id, image, name, price, description }) => (
+      <article key={id}>
+        <img src={image} alt={name} />
+        <div>
+          <h4>{name}</h4>
+          <h5 className="price">{formatPrice(price)}</h5>
+          <p>{description.slice(0, 150).trim()}...</p>
+          <Link to={`/products/${id}`} className="btn">
+            Details
+          </Link>
+        </div>
+      </article>
+    ))}
+  </Wrapper>
+);
+
+ListView.propTypes = {
+  products: arrayOf(
+    shape({
+      id: string,
+      image: string,
+      name: string,
+      price: number,
+      description: string,
+    }),
+  ).isRequired,
+};
 
 const Wrapper = styled.section`
   display: grid;
