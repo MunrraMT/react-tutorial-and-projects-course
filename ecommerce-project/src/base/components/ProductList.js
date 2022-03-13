@@ -3,11 +3,15 @@ import GridView from './GridView';
 // import ListView from './ListView';
 
 const ProductList = () => {
-  const { filteredProducts } = useFilterContext();
+  const { filteredProducts, allProducts } = useFilterContext();
 
-  console.log(filteredProducts);
-
-  return <GridView products={filteredProducts}>List</GridView>;
+  return (
+    <GridView
+      products={filteredProducts.legth > 0 ? filteredProducts : allProducts}
+    >
+      List
+    </GridView>
+  );
 };
 
 export default ProductList;
