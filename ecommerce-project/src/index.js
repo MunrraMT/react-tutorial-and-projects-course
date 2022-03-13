@@ -5,13 +5,15 @@ import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { ProductsProvider } from './base/context/products_context';
+import { FilterProvider, ProductsProvider } from './base/context';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <ProductsProvider>
-        <App />
+        <FilterProvider>
+          <App />
+        </FilterProvider>
       </ProductsProvider>
     </BrowserRouter>
   </React.StrictMode>,
