@@ -2,8 +2,7 @@
 
 import {
   LOAD_PRODUCTS,
-  // SET_LISTVIEW,
-  // SET_GRIDVIEW,
+  SET_GRIDVIEW,
   // UPDATE_SORT,
   // SORT_PRODUCTS,
   // UPDATE_FILTERS,
@@ -18,6 +17,10 @@ const filterReducer = (state, action) => {
   switch (type) {
     case LOAD_PRODUCTS: {
       return { ...state, allProducts: payload };
+    }
+
+    case SET_GRIDVIEW: {
+      return { ...state, gridView: (() => !state.gridView)() };
     }
 
     default: {

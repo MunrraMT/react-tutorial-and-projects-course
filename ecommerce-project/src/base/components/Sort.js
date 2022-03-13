@@ -5,16 +5,24 @@ import { BsFillGridFill, BsList } from 'react-icons/bs';
 import { useFilterContext } from '../context/filter_context';
 
 const Sort = () => {
-  const { filteredProducts, allProducts, gridView, filters } =
+  const { filteredProducts, allProducts, gridView, filters, toggleGridView } =
     useFilterContext();
 
   return (
     <Wrapper>
       <div className="btn-container">
-        <button type="button" className={gridView ? 'active' : ''}>
+        <button
+          type="button"
+          className={gridView ? 'active' : ''}
+          onClick={toggleGridView}
+        >
           <BsFillGridFill />
         </button>
-        <button type="button" className={gridView ? '' : 'active'}>
+        <button
+          type="button"
+          className={gridView ? '' : 'active'}
+          onClick={toggleGridView}
+        >
           <BsList />
         </button>
       </div>
@@ -92,6 +100,7 @@ const Wrapper = styled.section`
 
   .sort-input {
     border-color: transparent;
+    background: none;
     font-size: 1rem;
     text-transform: capitalize;
     padding: 0.25rem 0.5rem;

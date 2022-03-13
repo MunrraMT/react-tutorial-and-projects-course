@@ -1,12 +1,17 @@
-import { createContext, useContext, useEffect, useReducer } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useReducer,
+} from 'react';
 import { node } from 'prop-types';
 
 import reducer from '../reducers/filter_reducer';
 import { useProductsContext } from './products_context';
 import {
   LOAD_PRODUCTS,
-  // SET_GRIDVIEW,
-  // SET_LISTVIEW,
+  SET_GRIDVIEW,
   // UPDATE_SORT,
   // SORT_PRODUCTS,
   // UPDATE_FILTERS,
@@ -36,8 +41,19 @@ export const FilterProvider = ({ children }) => {
     console.log(state);
   }, [state]);
 
+  const toggleGridView = () => {
+    dispatch({ type: SET_GRIDVIEW });
+  };
+
+  const contextValue = useMemo(
+    () => ({ ...state, toggleGridView }),
+    [state, toggleGridView],
+  );
+
   return (
-    <FilterContext.Provider value={state}>{children}</FilterContext.Provider>
+    <FilterContext.Provider value={contextValue}>
+      {children}
+    </FilterContext.Provider>
   );
 };
 
