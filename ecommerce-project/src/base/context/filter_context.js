@@ -12,7 +12,7 @@ import { useProductsContext } from './products_context';
 import {
   LOAD_PRODUCTS,
   SET_GRIDVIEW,
-  // UPDATE_SORT,
+  UPDATE_SORT,
   // SORT_PRODUCTS,
   // UPDATE_FILTERS,
   // FILTER_PRODUCTS,
@@ -24,6 +24,7 @@ const initialState = {
   allProducts: [],
   gridView: false,
   filters: [],
+  sortOrder: '',
 };
 
 const FilterContext = createContext();
@@ -45,9 +46,13 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: SET_GRIDVIEW });
   };
 
+  const updateSortOrder = (order) => {
+    dispatch({ type: UPDATE_SORT, payload: order });
+  };
+
   const contextValue = useMemo(
-    () => ({ ...state, toggleGridView }),
-    [state, toggleGridView],
+    () => ({ ...state, toggleGridView, updateSortOrder }),
+    [state, toggleGridView, updateSortOrder],
   );
 
   return (

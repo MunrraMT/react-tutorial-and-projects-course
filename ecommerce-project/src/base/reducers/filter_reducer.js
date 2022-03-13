@@ -3,7 +3,7 @@
 import {
   LOAD_PRODUCTS,
   SET_GRIDVIEW,
-  // UPDATE_SORT,
+  UPDATE_SORT,
   // SORT_PRODUCTS,
   // UPDATE_FILTERS,
   // FILTER_PRODUCTS,
@@ -21,6 +21,10 @@ const filterReducer = (state, action) => {
 
     case SET_GRIDVIEW: {
       return { ...state, gridView: (() => !state.gridView)() };
+    }
+
+    case UPDATE_SORT: {
+      return { ...state, sortOrder: payload };
     }
 
     default: {
