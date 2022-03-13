@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { useFilterContext } from '../context/filter_context';
 
 const Sort = () => {
-  const [order, setOrder] = useState('');
+  const [order, setOrder] = useState('name-a');
 
   const {
     filteredProducts,
@@ -15,12 +15,14 @@ const Sort = () => {
     filters,
     toggleGridView,
     updateSortOrder,
+    sortProduct,
   } = useFilterContext();
 
   useEffect(() => {
     updateSortOrder(order);
+    sortProduct();
 
-    return () => updateSortOrder('');
+    return () => updateSortOrder('name-a');
   }, [order]);
 
   const handleChange = (e) => {
@@ -45,16 +47,13 @@ const Sort = () => {
           <BsList />
         </button>
       </div>
-
-      <p>
-        {filters.length > 0 ? filteredProducts.length : allProducts.length}{' '}
-        products found
-      </p>
+      <p>{filteredProducts.length} products found</p>
       <hr />
       <form>
         <label htmlFor="sort">
           sort by
           <select
+            defaultValue="name-a"
             name="sort"
             id="sort"
             className="sort-input"

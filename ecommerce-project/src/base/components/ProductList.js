@@ -3,16 +3,7 @@ import GridView from './GridView';
 import ListView from './ListView';
 
 const ProductList = () => {
-  const { filteredProducts, allProducts, filters, gridView } =
-    useFilterContext();
-
-  if (filters.length === 0) {
-    return gridView === false ? (
-      <ListView products={allProducts} />
-    ) : (
-      <GridView products={allProducts} />
-    );
-  }
+  const { filteredProducts, gridView } = useFilterContext();
 
   if (filteredProducts.length === 0) {
     return (

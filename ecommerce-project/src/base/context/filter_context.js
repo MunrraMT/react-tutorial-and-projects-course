@@ -13,7 +13,7 @@ import {
   LOAD_PRODUCTS,
   SET_GRIDVIEW,
   UPDATE_SORT,
-  // SORT_PRODUCTS,
+  SORT_PRODUCTS,
   // UPDATE_FILTERS,
   // FILTER_PRODUCTS,
   // CLEAR_FILTERS,
@@ -50,9 +50,13 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: UPDATE_SORT, payload: order });
   };
 
+  const sortProduct = () => {
+    dispatch({ type: SORT_PRODUCTS });
+  };
+
   const contextValue = useMemo(
-    () => ({ ...state, toggleGridView, updateSortOrder }),
-    [state, toggleGridView, updateSortOrder],
+    () => ({ ...state, toggleGridView, updateSortOrder, sortProduct }),
+    [state, toggleGridView, updateSortOrder, sortProduct],
   );
 
   return (
