@@ -16,10 +16,14 @@ const filterReducer = (state, action) => {
 
   switch (type) {
     case LOAD_PRODUCTS: {
+      const priceList = payload.map((item) => item.price);
+
       return {
         ...state,
         filteredProducts: [...payload],
         allProducts: [...payload],
+        maxPrice: Math.max(...priceList),
+        minPrice: Math.min(...priceList),
       };
     }
 

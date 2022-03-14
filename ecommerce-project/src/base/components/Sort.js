@@ -10,9 +10,7 @@ const Sort = () => {
 
   const {
     filteredProducts,
-    allProducts,
     gridView,
-    filters,
     toggleGridView,
     updateSortOrder,
     sortProduct,

@@ -23,8 +23,17 @@ const initialState = {
   filteredProducts: [],
   allProducts: [],
   gridView: false,
-  filters: [],
-  sortOrder: '',
+  filters: {
+    text: '',
+    company: 'all',
+    category: 'all',
+    color: 'all',
+    maxPrice: 0,
+    minPrice: 0,
+    actualPrice: 0,
+    freeShipping: false,
+  },
+  sortOrder: 'name-a',
 };
 
 const FilterContext = createContext();
