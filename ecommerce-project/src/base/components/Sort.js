@@ -8,17 +8,11 @@ import { useFilterContext } from '../context/filter_context';
 const Sort = () => {
   const [order, setOrder] = useState('name-a');
 
-  const {
-    filteredProducts,
-    gridView,
-    toggleGridView,
-    updateSortOrder,
-    sortProduct,
-  } = useFilterContext();
+  const { filteredProducts, gridView, toggleGridView, updateSortOrder } =
+    useFilterContext();
 
   useEffect(() => {
     updateSortOrder(order);
-    sortProduct();
 
     return () => updateSortOrder('name-a');
   }, [order]);

@@ -5,14 +5,21 @@ import {
   SET_GRIDVIEW,
   UPDATE_SORT,
   SORT_PRODUCTS,
-  // UPDATE_FILTERS,
-  // FILTER_PRODUCTS,
+  UPDATE_FILTERS,
+  FILTER_PRODUCTS,
   // CLEAR_FILTERS,
 } from '../actions';
 
 const filterReducer = (state, action) => {
   const { type } = action;
   const { payload } = action;
+
+  const sortOrderList = {
+    'price-lowest': (a, b) => a.price - b.price,
+    'price-highest': (a, b) => b.price - a.price,
+    'name-a': (a, b) => a.name.localeCompare(b.name),
+    'name-z': (a, b) => b.name.localeCompare(a.name),
+  };
 
   switch (type) {
     case LOAD_PRODUCTS: {
@@ -36,18 +43,34 @@ const filterReducer = (state, action) => {
     }
 
     case SORT_PRODUCTS: {
-      const sortOrderList = {
-        'price-lowest': (a, b) => a.price - b.price,
-        'price-highest': (a, b) => b.price - a.price,
-        'name-a': (a, b) => a.name.localeCompare(b.name),
-        'name-z': (a, b) => b.name.localeCompare(a.name),
-      };
-
       return {
         ...state,
         filteredProducts: [
           ...state.filteredProducts.sort(sortOrderList[state.sortOrder]),
         ],
+      };
+    }
+
+    case UPDATE_FILTERS: {
+      return {
+        ...state,
+        filters: { ...state.filters, [payload.name]: payload.value },
+      };
+    }
+
+    case FILTER_PRODUCTS: {
+      if (state.filters.text !== '') {
+        return {
+          ...state,
+          filteredProducts: [...state.allProducts].filter((product) =>
+            product.name.includes(state.filters.text),
+          ),
+        };
+      }
+
+      return {
+        ...state,
+        filteredProducts: [...state.allProducts],
       };
     }
 

@@ -14,8 +14,8 @@ import {
   SET_GRIDVIEW,
   UPDATE_SORT,
   SORT_PRODUCTS,
-  // UPDATE_FILTERS,
-  // FILTER_PRODUCTS,
+  UPDATE_FILTERS,
+  FILTER_PRODUCTS,
   // CLEAR_FILTERS,
 } from '../actions';
 
@@ -48,6 +48,14 @@ export const FilterProvider = ({ children }) => {
   }, [products]);
 
   useEffect(() => {
+    dispatch({ type: SORT_PRODUCTS });
+  }, [products, state.sortOrder]);
+
+  useEffect(() => {
+    dispatch({ type: FILTER_PRODUCTS });
+  }, [state.filters]);
+
+  useEffect(() => {
     console.log(state);
   }, [state]);
 
@@ -59,13 +67,24 @@ export const FilterProvider = ({ children }) => {
     dispatch({ type: UPDATE_SORT, payload: order });
   };
 
-  const sortProduct = () => {
-    dispatch({ type: SORT_PRODUCTS });
+  const updateFilters = (e) => {
+    const { name } = e.target;
+    const { value } = e.target;
+
+    dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
 
+  const clearFilters = () => {};
+
   const contextValue = useMemo(
-    () => ({ ...state, toggleGridView, updateSortOrder, sortProduct }),
-    [state, toggleGridView, updateSortOrder, sortProduct],
+    () => ({
+      ...state,
+      toggleGridView,
+      updateSortOrder,
+      updateFilters,
+      clearFilters,
+    }),
+    [state, toggleGridView, updateSortOrder, updateFilters, clearFilters],
   );
 
   return (
