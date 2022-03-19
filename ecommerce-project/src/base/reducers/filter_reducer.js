@@ -84,7 +84,19 @@ const filterReducer = (state, action) => {
         },
       );
 
-      newState.filteredProducts = productsfilteredByCompany;
+      const productsfilteredByColor = productsfilteredByCompany.filter(
+        (product) => {
+          if (newState.filters.color === 'all') return true;
+
+          const isHaveAColor = product.colors.find(
+            (color) => color === newState.filters.color,
+          );
+
+          return isHaveAColor !== undefined;
+        },
+      );
+
+      newState.filteredProducts = productsfilteredByColor;
 
       return newState;
     }
