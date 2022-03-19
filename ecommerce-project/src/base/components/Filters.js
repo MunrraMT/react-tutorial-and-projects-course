@@ -14,12 +14,8 @@ const Filters = () => {
   };
 
   const categories = getUniqueValues(allProducts, 'category');
-  const companies = getUniqueValues(allProducts, 'company');
-  const colors = [...getUniqueValues(allProducts, 'colors')];
-
-  console.log(categories);
-  console.log(companies);
-  console.log(colors);
+  // const companies = getUniqueValues(allProducts, 'company');
+  // const colors = getUniqueValues(allProducts, 'colors');
 
   return (
     <Wrapper>
@@ -35,6 +31,40 @@ const Filters = () => {
               onChange={updateFilters}
             />
           </div>
+
+          <div className="form-control">
+            <h5>category</h5>
+            <div>
+              {categories.map((category) => (
+                <button
+                  type="button"
+                  name="category"
+                  className={filters.category === category ? 'active' : ''}
+                  key={category}
+                  onClick={updateFilters}
+                  value={category}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+          {/* <div className="form-control">
+            <h5>company</h5>
+            <div>
+              {companies.map((company) => (
+                <p key={company}>{company}</p>
+              ))}
+            </div>
+          </div>
+          <div className="form-control">
+            <h5>color</h5>
+            <div>
+              {colors.map((color) => (
+                <p key={color}>{color}</p>
+              ))}
+            </div>
+          </div> */}
         </form>
       </div>
     </Wrapper>
