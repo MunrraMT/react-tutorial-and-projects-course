@@ -30,7 +30,7 @@ const initialState = {
     color: 'all',
     maxPrice: 0,
     minPrice: 0,
-    actualPrice: 0,
+    currentPrice: 0,
     freeShipping: false,
   },
   sortOrder: 'name-a',

@@ -29,8 +29,9 @@ const filterReducer = (state, action) => {
 
       newState.filteredProducts = payload.slice();
       newState.allProducts = payload.slice();
-      newState.maxPrice = Math.max(...priceList);
-      newState.minPrice = Math.min(...priceList);
+      newState.filters.minPrice = Math.min(...priceList);
+      newState.filters.maxPrice = Math.max(...priceList);
+      newState.filters.currentPrice = Math.max(...priceList);
 
       return newState;
     }
@@ -96,7 +97,11 @@ const filterReducer = (state, action) => {
         },
       );
 
-      newState.filteredProducts = productsfilteredByColor;
+      const productsfilteredByPrice = productsfilteredByColor.filter(
+        (product) => product.price <= Number(newState.filters.currentPrice),
+      );
+
+      newState.filteredProducts = productsfilteredByPrice;
 
       return newState;
     }
