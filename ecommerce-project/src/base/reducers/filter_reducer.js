@@ -76,30 +76,18 @@ const filterReducer = (state, action) => {
         },
       );
 
-      newState.filteredProducts = productsfilteredByCategory;
+      const productsfilteredByCompany = productsfilteredByCategory.filter(
+        (product) => {
+          if (newState.filters.company === 'all') return true;
+
+          return product.company === newState.filters.company;
+        },
+      );
+
+      newState.filteredProducts = productsfilteredByCompany;
 
       return newState;
     }
-
-    // case FILTER_PRODUCTS: {
-    //   const newFilteredProducts = newState.allProducts.filter((product) => {
-    //     if (newState.filters.text !== '') {
-    //       return product.name
-    //         .toLowerCase()
-    //         .includes(newState.filters.text.toLowerCase());
-    //     }
-
-    //     if (newState.filters.category !== 'all') {
-    //       return product.category === newState.filters.category;
-    //     }
-
-    //     return true;
-    //   });
-
-    //   newState.filteredProducts = newFilteredProducts;
-
-    //   return newState;
-    // }
 
     default: {
       return state;

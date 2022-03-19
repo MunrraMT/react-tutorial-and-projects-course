@@ -14,8 +14,8 @@ const Filters = () => {
   };
 
   const categories = getUniqueValues(allProducts, 'category');
-  // const companies = getUniqueValues(allProducts, 'company');
-  // const colors = getUniqueValues(allProducts, 'colors');
+  const companies = getUniqueValues(allProducts, 'company');
+  const colors = getUniqueValues(allProducts, 'colors');
 
   return (
     <Wrapper>
@@ -49,13 +49,20 @@ const Filters = () => {
               ))}
             </div>
           </div>
-          {/* <div className="form-control">
+          <div className="form-control">
             <h5>company</h5>
-            <div>
+            <select
+              name="company"
+              className="company"
+              value={filters.company}
+              onChange={updateFilters}
+            >
               {companies.map((company) => (
-                <p key={company}>{company}</p>
+                <option key={company} value={company}>
+                  {company}
+                </option>
               ))}
-            </div>
+            </select>
           </div>
           <div className="form-control">
             <h5>color</h5>
@@ -64,7 +71,7 @@ const Filters = () => {
                 <p key={color}>{color}</p>
               ))}
             </div>
-          </div> */}
+          </div>
         </form>
       </div>
     </Wrapper>
