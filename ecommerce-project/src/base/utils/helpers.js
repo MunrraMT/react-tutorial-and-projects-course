@@ -3,4 +3,10 @@ export const formatPrice = (number) =>
     number / 100,
   );
 
-export const getUniqueValues = () => {};
+export const getUniqueValues = (products, key) => {
+  const uniqueList = new Set(products.map((product) => product[key]).flat());
+
+  const uniqueListWithAll = ['all', ...uniqueList];
+
+  return uniqueListWithAll;
+};

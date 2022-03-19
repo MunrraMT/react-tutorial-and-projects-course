@@ -13,6 +13,14 @@ const Filters = () => {
     e.preventDefault();
   };
 
+  const categories = getUniqueValues(allProducts, 'category');
+  const companies = getUniqueValues(allProducts, 'company');
+  const colors = [...getUniqueValues(allProducts, 'colors')];
+
+  console.log(categories);
+  console.log(companies);
+  console.log(colors);
+
   return (
     <Wrapper>
       <div className="content">
