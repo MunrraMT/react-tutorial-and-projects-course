@@ -27,6 +27,7 @@
         "jsx-a11y"
     ],
     "rules": {
+        "prefer-object-spread": "off",
         "react/jsx-no-constructed-context-values": 0,
         "react/function-component-definition": [
             2,

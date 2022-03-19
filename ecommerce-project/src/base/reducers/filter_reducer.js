@@ -11,6 +11,8 @@ import {
 } from '../actions';
 
 const filterReducer = (state, action) => {
+  const newState = Object.assign({}, state);
+
   const { type } = action;
   const { payload } = action;
 
@@ -25,61 +27,62 @@ const filterReducer = (state, action) => {
     case LOAD_PRODUCTS: {
       const priceList = payload.map((item) => item.price);
 
-      return {
-        ...state,
-        filteredProducts: [...payload],
-        allProducts: [...payload],
-        maxPrice: Math.max(...priceList),
-        minPrice: Math.min(...priceList),
-      };
+      newState.filteredProducts = payload.slice();
+      newState.allProducts = payload.slice();
+      newState.maxPrice = Math.max(...priceList);
+      newState.minPrice = Math.min(...priceList);
+
+      return newState;
     }
 
     case SET_GRIDVIEW: {
-      return { ...state, gridView: (() => !state.gridView)() };
+      newState.gridView = (() => !newState.gridView)();
+
+      return newState;
     }
 
     case UPDATE_SORT: {
-      return { ...state, sortOrder: payload };
+      newState.sortOrder = payload;
+
+      return newState;
     }
 
     case SORT_PRODUCTS: {
-      return {
-        ...state,
-        filteredProducts: [
-          ...state.filteredProducts.sort(sortOrderList[state.sortOrder]),
-        ],
-      };
+      newState.filteredProducts.sort(sortOrderList[newState.sortOrder]);
+
+      return newState;
     }
 
     case UPDATE_FILTERS: {
-      return {
-        ...state,
-        filters: { ...state.filters, [payload.name]: payload.value },
-      };
+      newState.filters = { ...newState.filters, [payload.name]: payload.value };
+
+      return newState;
     }
 
     case FILTER_PRODUCTS: {
-      if (state.filters.text !== '') {
-        return {
-          ...state,
-          filteredProducts: [...state.allProducts].filter((product) =>
-            product.name.includes(state.filters.text),
-          ),
-        };
-      }
+      const newFilteredProducts = newState.allProducts.filter((product) => {
+        if (newState.filters.text !== '') {
+          return product.name
+            .toLowerCase()
+            .includes(newState.filters.text.toLowerCase());
+        }
 
-      return {
-        ...state,
-        filteredProducts: [...state.allProducts],
-      };
+        if (newState.filters.company !== 'all') return false;
+        if (newState.filters.category !== 'all') return false;
+        if (newState.filters.color !== 'all') return false;
+
+        return true;
+      });
+
+      newState.filteredProducts = newFilteredProducts;
+
+      return newState;
     }
 
     default: {
       return state;
     }
   }
-
-  throw new Error(`No Matching "${action.type}" - action type`);
 };
 
 export default filterReducer;
