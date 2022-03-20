@@ -7,7 +7,7 @@ import {
   SORT_PRODUCTS,
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
-  // CLEAR_FILTERS,
+  CLEAR_FILTERS,
 } from '../actions';
 
 const filterReducer = (state, action) => {
@@ -55,7 +55,19 @@ const filterReducer = (state, action) => {
     }
 
     case UPDATE_FILTERS: {
-      newState.filters = { ...newState.filters, [payload.name]: payload.value };
+      if (payload.name !== 'freeShipping') {
+        newState.filters = {
+          ...newState.filters,
+          [payload.name]: payload.value,
+        };
+      }
+
+      if (payload.name === 'freeShipping') {
+        newState.filters = {
+          ...newState.filters,
+          freeShipping: payload.checked,
+        };
+      }
 
       return newState;
     }
@@ -101,7 +113,21 @@ const filterReducer = (state, action) => {
         (product) => product.price <= Number(newState.filters.currentPrice),
       );
 
-      newState.filteredProducts = productsfilteredByPrice;
+      const productsfilteredByFreeShipping = productsfilteredByPrice.filter(
+        (product) => {
+          if (newState.filters.freeShipping === false) return true;
+
+          return product.shipping === true;
+        },
+      );
+
+      newState.filteredProducts = productsfilteredByFreeShipping;
+
+      return newState;
+    }
+
+    case CLEAR_FILTERS: {
+      newState.filters = Object.assign({}, payload);
 
       return newState;
     }

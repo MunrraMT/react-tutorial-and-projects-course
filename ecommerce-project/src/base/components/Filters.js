@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import styled from 'styled-components';
 import { FaCheck } from 'react-icons/fa';
 
@@ -116,7 +115,24 @@ const Filters = () => {
               onChange={updateFilters}
             />
           </div>
+
+          <div className="form-control">
+            <h5>free shipping</h5>
+            <label htmlFor="freeShipping">
+              <input
+                type="checkbox"
+                name="freeShipping"
+                id="freeShipping"
+                checked={filters.freeShipping}
+                onChange={updateFilters}
+              />
+            </label>
+          </div>
         </form>
+
+        <button type="button" className="clear-btn" onClick={clearFilters}>
+          clear filters
+        </button>
       </div>
     </Wrapper>
   );

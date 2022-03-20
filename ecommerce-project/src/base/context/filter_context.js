@@ -16,7 +16,7 @@ import {
   SORT_PRODUCTS,
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
-  // CLEAR_FILTERS,
+  CLEAR_FILTERS,
 } from '../actions';
 
 const initialState = {
@@ -70,11 +70,20 @@ export const FilterProvider = ({ children }) => {
   const updateFilters = (e) => {
     const { name } = e.target;
     const { value } = e.target;
+    const { checked } = e.target;
 
-    dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
+    if (name !== 'freeShipping') {
+      dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
+    }
+
+    if (name === 'freeShipping') {
+      dispatch({ type: UPDATE_FILTERS, payload: { name, checked } });
+    }
   };
 
-  const clearFilters = () => {};
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS, payload: initialState.filters });
+  };
 
   const contextValue = useMemo(
     () => ({
